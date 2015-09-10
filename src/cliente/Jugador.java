@@ -13,20 +13,21 @@ public class Jugador {
 	Recurso2 r2;
 	Recurso3 r3;
 	
-	Lista listaR = new Lista();
-	Lista listaC = new Lista();
-	
+	Lista listaRecursos = new Lista();
+	Lista listaClanes = new Lista();
+	Lista listaBloqueos = new Lista();
+	Lista listaArmas = new Lista();
 	public Jugador(String un,String pw){
 		userName=un;
 		password=pw;
 	}
 	public void crearClan(String clanName){
 		Clan c = new Clan(clanName, null);
-		listaC.nuevoObj(c);
+		listaClanes.nuevoObj(c);
 		System.out.println(this.getUserName() +  " ha creado el clan");
 	}
 	public void conectarseAClan(Clan clan,String nombreClan){
-		listaC.buscar(nombreClan);
+		listaClanes.buscar(nombreClan);
 	}
 	public boolean Entrar(){
 		int n = 1;
@@ -39,13 +40,16 @@ public class Jugador {
 //	}
 	public void recolectar(Object ele){
 		if (ele.equals(r1)){
-			listaR.nuevoObj(r1);
+			listaRecursos.nuevoObj(r1);
+			System.out.println("Se ha obtenido 3x de madera");
 		}
 		else if (ele.equals(r2)){
-			listaR.nuevoObj(r2);
+			listaRecursos.nuevoObj(r2);
+			System.out.println("Se ha obtenido 2x de " + r2);
 		}
 		else{
-			listaR.nuevoObj(r3);
+			listaRecursos.nuevoObj(r3);
+			System.out.println("Se ha obtenido 1x de " + r2);
 		}
 	}
 //	public void pandoraUnderAttack(){

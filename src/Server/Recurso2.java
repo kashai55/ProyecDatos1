@@ -8,4 +8,10 @@ public class Recurso2 implements Recursos{
 		System.out.println("se obtuvo" + nombre );
 	}
 
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return nombre;
+	}
+
 }

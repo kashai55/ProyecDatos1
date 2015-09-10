@@ -8,5 +8,9 @@ public class Recurso3 implements Recursos{
 		System.out.println("se obtuvo" + nombre );
 	}
 
+	@Override
+	public String getName() {
+		return nombre;
+	}
 }
 
