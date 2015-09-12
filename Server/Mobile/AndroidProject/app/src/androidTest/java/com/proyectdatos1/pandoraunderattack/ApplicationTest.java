@@ -1,4 +1,4 @@
-package com.proyectdatos1.pandoraunderattack;
+package Mobile.AndroidProject.app.src.androidTest.java.com.proyectdatos1.pandoraunderattack;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
