@@ -14,17 +14,24 @@ public class Lista {
 	}
 	
 	public void nuevoObj(Object ele){
+		Nodo nuevo= new Nodo(ele);
 		if (!estaVacia()){
-			tail= new Nodo(ele,null,tail);
-			tail.ant.sig= tail;
+			this.tail.sig=nuevo;
+			nuevo.ant=tail;
+			nuevo.indice = tail.indice+1;
+			tail=nuevo;
 		}
-		else head = tail = new Nodo(ele);
+		else{
+			this.head = this.tail = nuevo;
+			nuevo.indice=0;
+		}
 	}
+	
 	public Object buscar(Object ele){
 		Nodo temp;
-		temp=head;
+		temp=this.head;
 		while (temp!=null){
-			if (temp.ele != ele){
+			if (!temp.ele.equals(ele)){
 				temp=temp.sig;
 			}
 			else{
@@ -39,7 +46,7 @@ public class Lista {
 		return temp.ele;
 	}
 	
-	public Nodo Sub(int n){
+	public Object Sub(int n){
 		if (n<0){
 			System.out.println("Error");
 			return null;
@@ -51,11 +58,12 @@ public class Lista {
 		else{
 			Nodo temp= this.head;
 			int i=0;
-			while (i<temp.indice){
-				i++;
+			while (i<n){
 				temp=temp.sig;
+				i++;
 			}
-			return temp;
+			System.out.println(temp.ele);
+			return temp.ele;
 		}
 	}
 }
