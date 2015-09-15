@@ -8,11 +8,6 @@ public class Jugador {
 
 	String userName;
 	String password;
-	int rango;
-	int cantRec;
-	Recurso1 r1;
-	Recurso2 r2;
-	Recurso3 r3;
 	
 	Lista listaRecursos = new Lista();
 	Lista listaClanes = new Lista();
@@ -37,20 +32,56 @@ public class Jugador {
 		}
 		return false;
 	}
-//	public void solicitudClan(){
-//	}
-	public void recolectar(Object ele){
-		if (ele.equals(r1)){
-			listaRecursos.nuevoObj(r1);
-			System.out.println("Se ha obtenido 3x de madera");
-		}
-		else if (ele.equals(r2)){
-			listaRecursos.nuevoObj(r2);
-			System.out.println("Se ha obtenido 2x de " + r2);
+
+	public void crearArmas(String arma){
+		CreadorAbstracto Creador;
+		Creador = new CreadorConcreto();
+		if (arma=="Arma1"){
+			Object Arma = Creador.factoryMethod("Arma1");
+			System.out.println("Se creo una Arma1 satisfactoriamente");
+			listaArmas.nuevoObj(Arma);
 		}
 		else{
-			listaRecursos.nuevoObj(r3);
-			System.out.println("Se ha obtenido 1x de " + r2);
+			Object Arma = Creador.factoryMethod("Arma2");
+			System.out.println("Se creo una Arma2 satisfactoriamente");
+			listaArmas.nuevoObj(Arma);
+		}
+		
+	}
+	
+	public void crearBloqueo(String bloqueo){
+		CreadorAbstracto Creador;
+		Creador = new CreadorConcreto();
+		if (bloqueo=="Bloqueo"){
+			Object Bloqueo = Creador.factoryMethod("Bloqueo1");
+			System.out.println("Se creo una Bloqueo1 satisfactoriamente");
+			listaArmas.nuevoObj(Bloqueo);
+		}
+		else{
+			Object Bloqueo = Creador.factoryMethod("bloqueo2");
+			System.out.println("Se creo una Bloqueo2 satisfactoriamente");
+
+			listaArmas.nuevoObj(Bloqueo);
+		}
+		
+	}
+	public void recolectar(String recurso){
+		CreadorAbstracto Creador;
+		Creador = new CreadorConcreto();
+		if (recurso=="Madera"){
+			Object Recurso = Creador.factoryMethod("Madera");
+			System.out.println("Se obtuvo Madera satisfactoriamente");
+			listaRecursos.nuevoObj(Recurso);
+		}
+		else if (recurso=="Piedra"){
+			Object Recurso = Creador.factoryMethod("Piedra");
+			System.out.println("Se obtuvo Piedra satisfactoriamente");
+			listaRecursos.nuevoObj(Recurso);
+		}
+		else{
+			Object Recurso = Creador.factoryMethod("Metal");
+			System.out.println("Se obtuvo Metal satisfactoriamente");
+			listaRecursos.nuevoObj(Recurso);
 		}
 	}
 //	public void pandoraUnderAttack(){

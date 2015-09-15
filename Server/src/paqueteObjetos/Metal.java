@@ -1,8 +1,8 @@
 package paqueteObjetos;
 
-public class Recurso2 implements Recursos{
-	String nombre= "RecursoEjemplo2";
-	int cantidad=2;
+public class Metal implements Recursos{
+	String nombre= "Metal";
+	int cantidad=1;
 
 	public void operation() {
 		System.out.println("se obtuvo" + nombre );
@@ -10,8 +10,7 @@ public class Recurso2 implements Recursos{
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return nombre;
 	}
-
 }
+

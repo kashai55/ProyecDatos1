@@ -1,8 +1,7 @@
 package paqueteServidor;
-import paqueteServidor.Mundo;
-import paqueteCliente.Jugador;
-import paqueteLista.*;
 import paqueteObjetos.*;
+import paqueteLista.*;
+import paqueteCliente.*;
 
 public class Clan {
 	String clanName;

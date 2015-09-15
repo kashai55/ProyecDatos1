@@ -1,7 +1,7 @@
 package paqueteObjetos;
 
-public class Recurso1 implements Recursos{
-	String nombre= "RecursoEjemplo1";
+public class Madera implements Recursos{
+	String nombre="Madera";
 	int cantidad=3;
 	
 

@@ -74,13 +74,22 @@ public class Lista {
 				this.tail=tail.ant;
 			}
 			else{
+				boolean borrado=false;
 				while (temp!=null){
 					if (!temp.ele.equals(ele)){
-						temp=temp.sig;
+						if ( borrado){
+							temp.indice--;
+							temp=temp.sig;
+						}
+						else{
+							temp=temp.sig;
+						}
 					}
 					else{
 						temp.ant.sig=temp.sig;
 						temp.sig.ant=temp.ant;
+						borrado=true;
+						temp=temp.sig;
 					}
 				}
 			}

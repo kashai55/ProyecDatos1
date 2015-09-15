@@ -7,9 +7,9 @@ import paqueteLista.Lista;
 
 public class Cliente implements Runnable {
 	
-	public Emisor emi;
+	Emisor emi;
 	Receptor reci;
-	public Separador sep;
+	Separador sep;
     
     public Cliente() {
     	emi=new Emisor();

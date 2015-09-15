@@ -1,6 +1,8 @@
 package paqueteObjetos;
 
-public interface Armas {
+public interface Bloqueos {
+	
 	public String getName();
+	
 	public void operation();
 }
