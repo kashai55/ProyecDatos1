@@ -46,6 +46,46 @@ public class Lista {
 		return temp.ele;
 	}
 	
+	public int CantObj(Object ele){
+		Nodo temp;
+		temp=head;
+		int i=0;
+		while (temp!=null){
+			if (!temp.ele.getClass().equals(ele.getClass())){
+				temp=temp.sig;
+			}
+			else{
+				i=i+1;
+				temp=temp.sig;
+			}
+		}
+		System.out.println("se encuentran " + i + " del elemento buscado");
+		return i;
+	}
+	
+	public void EliminarObj(Object ele){
+		Nodo temp;
+		temp=head;
+		if (head!=null){
+			if(ele.equals(head.ele)){
+				this.head=head.sig;
+			}
+			else if(ele.equals(tail.ele)){
+				this.tail=tail.ant;
+			}
+			else{
+				while (temp!=null){
+					if (!temp.ele.equals(ele)){
+						temp=temp.sig;
+					}
+					else{
+						temp.ant.sig=temp.sig;
+						temp.sig.ant=temp.ant;
+					}
+				}
+			}
+		}
+	}
 	public Object Sub(int n){
 		if (n<0){
 			System.out.println("Error");

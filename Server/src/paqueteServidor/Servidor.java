@@ -30,8 +30,9 @@ public class Servidor implements Runnable{
         	Lista listaMensaje=sep.separar(mensaje);
         	if (listaMensaje.Sub(1).equals("todo bien?")){
         		System.out.println("omg eso fue un todo bien?");}
+        		emi.enviarAcliente("pura vida", (String)listaMensaje.Sub(0));
         	if (listaMensaje.Sub(1).equals("hola")){
-        		emi.enviarAcliente("El servidor responde PUTO!!", (String)listaMensaje.Sub(0));
+        		emi.enviarAcliente("holi", (String)listaMensaje.Sub(0));
         		
         	}
     	}

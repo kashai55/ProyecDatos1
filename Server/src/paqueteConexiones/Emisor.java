@@ -13,7 +13,7 @@ import java.net.Socket;
 
 public class Emisor {
 	String miIP;
-	String ipServidor="192.168.0.8"; //aca va el ip de la maquina que definamos como servidor
+	String ipServidor="192.168.100.9"; //aca va el ip de la maquina que definamos como servidor
 	Socket ClienSo;
 	
     public Emisor(){

@@ -8,13 +8,10 @@ import paqueteObjetos.*;
 
 public class Prueba {
 	public static void main(String[] args) throws InterruptedException {
-		Servidor ser=new Servidor();
-		Emisor em=new Emisor();
-		Thread hilo=new Thread(ser);
+		Cliente chinoesgay = new Cliente();
+		Thread hilo = new Thread(chinoesgay);
 		hilo.start();
-		em.enviarAservidor("hola");
-		em.enviarAservidor("todo bien?");
-		
+		chinoesgay.emi.enviarAservidor("hola");
 	}
 	
 }
