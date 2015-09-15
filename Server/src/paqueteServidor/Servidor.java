@@ -31,7 +31,8 @@ public class Servidor implements Runnable{
         	if (listaMensaje.Sub(1).equals("todo bien?")){
         		System.out.println("omg eso fue un todo bien?");}
         	if (listaMensaje.Sub(1).equals("hola")){
-        		System.out.println("omg eso fue un hola");
+        		emi.enviarAcliente("El servidor responde PUTO!!", (String)listaMensaje.Sub(0));
+        		
         	}
     	}
     }
