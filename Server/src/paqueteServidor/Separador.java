@@ -1,4 +1,4 @@
-package paqueteConexiones;
+package paqueteServidor;
 
 import paqueteLista.*;
 

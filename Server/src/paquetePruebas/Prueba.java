@@ -2,13 +2,19 @@ package paquetePruebas;
 
 import paqueteServidor.*;
 import paqueteCliente.*;
-import paqueteConexiones.*;
+
 import paqueteLista.*;
 import paqueteObjetos.*;
 
 public class Prueba {
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws Exception{
+		Servidor servidor=new Servidor();
+		Thread hiloServidor=new Thread(servidor);
+		hiloServidor.start(); 
 		
+		Cliente cli=new Cliente();
+		
+
+
 	}
-	
 }
