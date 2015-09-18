@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context="com.proyectdatos1.pandoraunderattack.GPSMapsActivity">
+    <item android:id="@+id/menu_item_direction"
+        android:title="holl" />
+
+</menu>
