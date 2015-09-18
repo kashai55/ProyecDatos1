@@ -2,7 +2,8 @@ package paqueteObjetos;
 
 public class Piedra implements Recursos{
 	String nombre= "Piedra";
-	int cantidad=2;
+	float x;
+	float y;
 
 	public void operation() {
 		System.out.println("se obtuvo" + nombre );
@@ -12,6 +13,13 @@ public class Piedra implements Recursos{
 	public String getName() {
 		// TODO Auto-generated method stub
 		return nombre;
+	}
+
+	@Override
+	public void SetCoord(float x, float y) {
+		
+		// TODO Auto-generated method stub
+		
 	}
 
 }

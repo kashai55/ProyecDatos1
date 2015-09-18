@@ -14,7 +14,7 @@ public class CreadorConcreto extends CreadorAbstracto{
     		case "Piedra": objeto =new Piedra();
     		break;
     		
-    		case "Metal": objeto =new Metal();
+    		case "Hierro": objeto =new Hierro();
     		break;
 
     		case "Arma1": objeto =new Arma1();
@@ -28,6 +28,7 @@ public class CreadorConcreto extends CreadorAbstracto{
     		
     		case "Bloqueo2": objeto =new Bloqueo2();
     		break;
+    		
     	}
     	return objeto;
 

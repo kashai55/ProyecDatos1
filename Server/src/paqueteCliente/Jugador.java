@@ -8,11 +8,16 @@ public class Jugador {
 
 	String userName;
 	String password;
+	int madera=0;
+	int hierro=0;
+	int piedra=0;
 	
-	Lista listaRecursos = new Lista();
+	Clan clanActual;
+	
 	Lista listaClanes = new Lista();
 	Lista listaBloqueos = new Lista();
 	Lista listaArmas = new Lista();
+	
 	public Jugador(String un,String pw){
 		userName=un;
 		password=pw;
@@ -65,23 +70,25 @@ public class Jugador {
 		}
 		
 	}
-	public void recolectar(String recurso){
-		CreadorAbstracto Creador;
-		Creador = new CreadorConcreto();
-		if (recurso=="Madera"){
-			Object Recurso = Creador.factoryMethod("Madera");
-			System.out.println("Se obtuvo Madera satisfactoriamente");
-			listaRecursos.nuevoObj(Recurso);
+	public void recolectar(Recursos r){
+		if (r.getName()=="Madera"){
+			this.madera++;
+			this.clanActual.madera++;
+			
+			System.out.println("Se obtuvo 1 de Madera al inventario de:" + this.userName);
+			System.out.println("Se agrego 1 de Madera al clan:" + this.clanActual.clanName);
+
 		}
-		else if (recurso=="Piedra"){
-			Object Recurso = Creador.factoryMethod("Piedra");
-			System.out.println("Se obtuvo Piedra satisfactoriamente");
-			listaRecursos.nuevoObj(Recurso);
+		if (r.getName()=="Piedra"){
+			this.piedra++;
+			this.clanActual.piedra++;
+			System.out.println("Se obtuvo 1 de Piedra");
 		}
 		else{
-			Object Recurso = Creador.factoryMethod("Metal");
-			System.out.println("Se obtuvo Metal satisfactoriamente");
-			listaRecursos.nuevoObj(Recurso);
+			this.hierro++;
+			this.clanActual.hierro++;
+			System.out.println("Se obtuvo 1 de Piedra");
+			
 		}
 	}
 //	public void pandoraUnderAttack(){
@@ -92,3 +99,4 @@ public class Jugador {
 		return userName;
 	}
 }
+

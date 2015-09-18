@@ -4,14 +4,19 @@ import paqueteLista.*;
 import paqueteCliente.*;
 
 public class Clan {
-	String clanName;
+	public String clanName;
 	Reliquia reliquia;
+	public int madera=0;
+	public int hierro=0;
+	public int piedra=0;
 	
-	Lista listaR = new Lista();
-	Lista listaJ = new Lista();
+	Lista listaReliquias = new Lista();
+	Lista listaJugadores = new Lista();
+
 	Nodo n;
 	public Clan(String clanName, Jugador user){
-		listaJ.nuevoObj(user);
-		listaR.nuevoObj(reliquia);
+		listaJugadores.nuevoObj(user);
+		listaReliquias.nuevoObj(reliquia);
+		
 	}
 }

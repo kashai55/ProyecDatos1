@@ -2,8 +2,9 @@ package paqueteObjetos;
 
 public class Madera implements Recursos{
 	String nombre="Madera";
-	int cantidad=3;
-	
+	int cantidad=1;
+	float x;
+	float y;
 
 	public void operation() {
 		getName();
@@ -15,6 +16,14 @@ public class Madera implements Recursos{
 	public String getName() {
 		// TODO Auto-generated method stub
 		return nombre;
+	}
+
+
+	@Override
+	public void SetCoord(float x, float y) {
+		this.x=x;
+		this.y=y;
+		
 	}
 
 }
