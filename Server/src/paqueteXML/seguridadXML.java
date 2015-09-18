@@ -2,7 +2,6 @@ package paqueteXML;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -19,14 +18,14 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
 
-public class crearXML {
-	
-	String nombreXML;
+public class seguridadXML {
+    
+    String nombreXML;
     Document documento;
     //Main Node
     Element raiz;
 
-    public crearXML(String name){
+    public seguridadXML(String name){
         try {
             this.nombreXML=name;
             
@@ -40,7 +39,7 @@ public class crearXML {
             
         } 
         catch (ParserConfigurationException ex) {
-            Logger.getLogger(crearXML.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(seguridadXML.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
@@ -52,6 +51,7 @@ public class crearXML {
         Transformer transformer = TransformerFactory.newInstance().newTransformer();
         transformer.transform(source, result);
         
+            
     }
     public void agregarJugador(String nombre,String contra){
     //creacion de lemento de jugador con la contraseña
@@ -62,44 +62,17 @@ public class crearXML {
             contraseña.appendChild(cont);
             jugador.appendChild(contraseña);
             
-            //nodo recursos
-            Element recursos=documento.createElement("recursos");
-            Text cont1=documento.createTextNode("Madera-0,Piedra-0,Metal-0");
-            recursos.appendChild(cont1);
-            jugador.appendChild(recursos);
-            
-            //nodo clan
-            Element clanes=documento.createElement("clan");
-            Text cont2=documento.createTextNode("clanes");
-            clanes.appendChild(cont2);
-            jugador.appendChild(clanes);
-           
-             //nodo bloqueos
-            Element bloqueos=documento.createElement("bloqueos");
-            Text cont3=documento.createTextNode("bloqueos");
-            bloqueos.appendChild(cont3);
-            jugador.appendChild(bloqueos);
-            
-             //nodo armas
-            Element armas=documento.createElement("armas");
-            Text cont4=documento.createTextNode("armas");
-            armas.appendChild(cont4);
-            jugador.appendChild(armas);
-            
-             //nodo coordenadas
-            Element coordenadas=documento.createElement("coordenadas");
-            Text cont5=documento.createTextNode("x,y");
-            coordenadas.appendChild(cont5);
-            jugador.appendChild(coordenadas);
             
             raiz.appendChild(jugador);
             
-            try {
+            
+        try {
             this.cerrarXML();
         } catch (TransformerException ex) {
-            Logger.getLogger(crearXML.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(seguridadXML.class.getName()).log(Level.SEVERE, null, ex);
         }
         
             String a=contraseña.getTextContent();
             System.out.print("Este es el valor del nodo"+a);
-    }}
+    }
+}
