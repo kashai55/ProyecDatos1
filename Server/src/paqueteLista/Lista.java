@@ -115,4 +115,17 @@ public class Lista {
 			return temp.ele;
 		}
 	}
+	public void Imprimir(){
+		Nodo temp;
+		temp=this.head;
+		if (head==null){
+			System.out.println("Lista vacia");
+			return;
+		}
+		while(temp!=this.tail){
+			System.out.println(temp.ele.toString());
+			temp=temp.sig;
+		}
+		System.out.println(this.tail.ele.toString());
+	}
 }
