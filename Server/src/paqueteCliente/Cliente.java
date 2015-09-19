@@ -1,6 +1,5 @@
 package paqueteCliente;
 import java.io.BufferedReader;
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,7 +11,6 @@ import java.net.UnknownHostException;
 public class Cliente {
 	protected Socket sk;
     protected DataOutputStream salida;
-    protected DataInputStream entrada2;
     protected BufferedReader entrada;
     protected String ipServidor;
     
@@ -20,6 +18,8 @@ public class Cliente {
 		try {
 			ipServidor=InetAddress.getLocalHost().getHostAddress(); //Solo para probar sobre mi propia computadora
 			this.sk= new Socket(ipServidor,8080);
+			this.entrada = new BufferedReader(new InputStreamReader(sk.getInputStream()));
+			this.salida = new DataOutputStream(sk.getOutputStream());
 		}
 		catch (UnknownHostException e) {
 			e.printStackTrace();
@@ -32,18 +32,12 @@ public class Cliente {
 	public void comunicarse(String mensaje){
 		try {
 			
-			salida = new DataOutputStream(sk.getOutputStream());
-//	        entrada = new BufferedReader(new InputStreamReader(sk.getInputStream()));
-	        entrada2= new DataInputStream(sk.getInputStream());
-	        salida.writeUTF(mensaje);
-	        
-	        //String respuesta;
-//	        respuesta = entrada.readLine();
-	        String respuesta2 = entrada2.readUTF();
-//	        System.out.println(" Servidor respondió: " + respuesta);
-	        System.out.println(" Servidor respondió como respuesta 2: " + respuesta2);
-	        salida.close();
-//	        sk.close();
+	        salida.writeUTF(mensaje+"\n");
+	        String respuestaEntrada;
+	        respuestaEntrada = entrada.readLine();
+	        String respuesta=respuestaEntrada.substring(2, respuestaEntrada.length());
+	        System.out.println(" Servidor respondió : " + respuesta);
+
 		}
 		catch (IOException e) {
 			e.printStackTrace();
