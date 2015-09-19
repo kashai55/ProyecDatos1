@@ -37,7 +37,7 @@ public class Cliente {
 	        entrada2= new DataInputStream(sk.getInputStream());
 	        salida.writeUTF(mensaje);
 	        
-	        String respuesta;
+	        //String respuesta;
 //	        respuesta = entrada.readLine();
 	        String respuesta2 = entrada2.readUTF();
 //	        System.out.println(" Servidor respondió: " + respuesta);
