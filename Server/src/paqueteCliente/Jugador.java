@@ -23,9 +23,9 @@ public class Jugador{
 	Mundo mundo;
 	clanesXML xmlC;
 	
-	Lista listaClanes = new Lista();
-	Lista listaBloqueos = new Lista();
-	Lista listaArmas = new Lista();
+	public Lista listaClanes = new Lista();
+	public Lista listaBloqueos = new Lista();
+	public Lista listaArmas = new Lista();
 	
 	public Jugador(String un,String pw){
 		userName=un;
@@ -51,6 +51,7 @@ public class Jugador{
 				Object Arma = Creador.factoryMethod("Arma1");
 				System.out.println("Se creo una Arma1 satisfactoriamente");
 				listaArmas.nuevoObj(Arma);
+				listaArmas.Imprimir();
 				this.hierro= hierro-1;
 				this.piedra=piedra-1;
 			}
@@ -63,6 +64,7 @@ public class Jugador{
 				Object Arma = Creador.factoryMethod("Arma2");
 				System.out.println("Se creo una Arma2 satisfactoriamente");
 				listaArmas.nuevoObj(Arma);
+				listaArmas.Imprimir();
 				this.hierro=hierro-3;
 				this.piedra=piedra-5;
 				this.madera=madera-7;
@@ -84,6 +86,7 @@ public class Jugador{
 				Object Bloqueo = Creador.factoryMethod("Bloqueo1");
 				System.out.println("Se creo una Bloqueo1 satisfactoriamente");
 				listaBloqueos.nuevoObj(Bloqueo);
+				listaBloqueos.Imprimir();
 				this.hierro=hierro-3;
 				this.piedra=piedra-3;
 			}
@@ -95,7 +98,8 @@ public class Jugador{
 			if (this.hierro>=3 && this.piedra>=3){
 				Object Bloqueo = Creador.factoryMethod("Bloqueo2");
 				System.out.println("Se creo una Bloqueo2 satisfactoriamente");
-				listaArmas.nuevoObj(Bloqueo);
+				listaBloqueos.nuevoObj(Bloqueo);
+				listaBloqueos.Imprimir();
 				this.hierro=hierro-3;
 				this.piedra=piedra-5;
 				this.madera=madera-7;
