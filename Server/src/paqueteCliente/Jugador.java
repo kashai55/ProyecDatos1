@@ -12,7 +12,6 @@ import paqueteXML.*;
 public class Jugador{
 
 	protected String userName;
-	protected String password;
 	protected int madera=0;
 	protected int hierro=0;
 	protected int piedra=0;
@@ -21,39 +20,36 @@ public class Jugador{
 	
 	protected Clan clanActual;
 	Mundo mundo;
-	clanesXML xmlC;
 	
 	public Lista listaClanes = new Lista();
 	public Lista listaBloqueos = new Lista();
 	public Lista listaArmas = new Lista();
 	
-	public Jugador(String un,String pw){
+	public Jugador(String un){
 		userName=un;
-		password=pw;
 	}
 	public void crearClan(String clanName) throws TransformerConfigurationException, TransformerException{
-		Clan c = new Clan(clanName, this);
-		listaClanes.nuevoObj(c);
-		xmlC.añadirClan(clanName, this.getUserName(),String.valueOf(this.getPoscx()), String.valueOf(this.getPoscy()));
-		System.out.println(" se ha creado el clan: " + c.getClanName());
-		mundo.ListaClanes.nuevoObj(c);
-		System.out.println(this.getUserName() +  " ha creado el clan");
+		Clan clan = new Clan("Lolol",this);
+		this.listaClanes.nuevoObj(clan);
 	}
-	public void conectarseAClan(String nombreClan){
-		mundo.ListaClanes.buscar(nombreClan);
-	}
+//	public String ConectarseClan(String nombreClan){
+//		mundo.ListaClanes.buscar(nombreClan);
+//		return 
+//	}
 
 	public void crearArmas(String arma){
 		CreadorAbstracto Creador;
 		Creador = new CreadorConcreto();
 		if (arma=="Arma1"){
-			if (this.hierro>=1 && this.piedra>=1){
+			if (this.hierro>=2 && this.piedra>=1){
 				Object Arma = Creador.factoryMethod("Arma1");
 				System.out.println("Se creo una Arma1 satisfactoriamente");
 				listaArmas.nuevoObj(Arma);
 				listaArmas.Imprimir();
-				this.hierro= hierro-1;
-				this.piedra=piedra-1;
+				this.setHierro(-2);
+				this.setPiedra(-1);
+				this.clanActual.setClanHierro(-2);
+				this.clanActual.setClanPiedra(-1);
 			}
 			else{
 				System.out.println("No se cuenta con los materiales necesarios para crear el arma");
@@ -65,9 +61,12 @@ public class Jugador{
 				System.out.println("Se creo una Arma2 satisfactoriamente");
 				listaArmas.nuevoObj(Arma);
 				listaArmas.Imprimir();
-				this.hierro=hierro-3;
-				this.piedra=piedra-5;
-				this.madera=madera-7;
+				this.setHierro(-3);
+				this.setPiedra(-5);
+				this.setMadera(-7);
+				this.clanActual.setClanHierro(-3);
+				this.clanActual.setClanPiedra(-5);
+				this.clanActual.setClanMadera(-7);
 			}
 			else{
 				System.out.println("No se cuenta con los materiales necesarios para crear el arma");
@@ -89,20 +88,26 @@ public class Jugador{
 				listaBloqueos.Imprimir();
 				this.hierro=hierro-3;
 				this.piedra=piedra-3;
+				this.clanActual.setClanHierro(-3);
+				this.clanActual.setClanPiedra(-3);
 			}
 			else{
 				System.out.println("No se cuenta con los materiales necesarios para crear el bloqueo");
 			}
 		}
 		else if (bloqueo == "Bloqueo2"){
-			if (this.hierro>=3 && this.piedra>=3){
+			if (this.hierro>=5 && this.piedra>=7 && this.madera>=10){
 				Object Bloqueo = Creador.factoryMethod("Bloqueo2");
 				System.out.println("Se creo una Bloqueo2 satisfactoriamente");
 				listaBloqueos.nuevoObj(Bloqueo);
 				listaBloqueos.Imprimir();
-				this.hierro=hierro-3;
-				this.piedra=piedra-5;
-				this.madera=madera-7;
+				this.hierro=hierro-5;
+				this.piedra=piedra-7;
+				this.madera=madera-10;
+				this.clanActual.setClanHierro(-5);
+				this.clanActual.setClanPiedra(-7);
+				this.clanActual.setClanMadera(-10);
+				
 			}
 			else{
 				System.out.println("No se cuenta con los materiales necesarios para crear el bloqueo");
@@ -117,7 +122,6 @@ public class Jugador{
 		if (r.getName()=="Madera"){
 			this.setMadera(1);
 			this.clanActual.setClanMadera(1);
-			xmlC.aumentarMaderaJugador(clanActual.getClanName(), this.getUserName(), 1);
 			System.out.println("Se obtuvo 1 de Madera al inventario de:" + this.userName);
 			System.out.println("Se agrego 1 de Madera al clan:" + this.clanActual.getClanName());
 
@@ -125,7 +129,6 @@ public class Jugador{
 		if (r.getName()=="Piedra"){
 			this.setPiedra(1);
 			this.clanActual.setClanPiedra(1);
-//			xmlC.aumentarPiedraJugador(clanActual.clanName, this.getUserName(), 1);
 			System.out.println("Se obtuvo 1 de Piedra");
 			System.out.println("Se agrego 1 de Piedra al clan:" + this.clanActual.getClanName());
 
@@ -133,7 +136,6 @@ public class Jugador{
 		else{
 			this.setHierro(1);
 			this.clanActual.setClanHierro(1);
-//			xmlC.aumentarHierroJugador(clanActual.clanName, this.getUserName(), 1);
 			System.out.println("Se obtuvo 1 de Hierro");
 			System.out.println("Se agrego 1 de Hierro al clan:" + this.clanActual.getClanName());
 			
@@ -189,5 +191,45 @@ public class Jugador{
 //		System.out.println(posy);
 //		return posy;
 //	}
+	public void setArma1(int cantArma1){
+		int i;
+		for(i=0; i>cantArma1; i++){
+			CreadorAbstracto Creador;
+			Creador = new CreadorConcreto();
+			Object Arma = Creador.factoryMethod("Arma1");
+			listaArmas.nuevoObj(Arma);
+			System.out.println(listaArmas.CantObj(Arma));
+			
+		}
+	}
+	public void setArma2(int cantArma2){
+		int i;
+		for(i=0; i>cantArma2; i++){
+			CreadorAbstracto Creador;
+			Creador = new CreadorConcreto();
+			Object Arma = Creador.factoryMethod("Arma2");
+			listaArmas.nuevoObj(Arma);
+			System.out.println(listaArmas.CantObj(Arma));
+		}
+	}
+	public void setBloqueo1(int cantBloqueo1){
+		int i;
+		for(i=0; i>cantBloqueo1; i++){
+			CreadorAbstracto Creador;
+			Creador = new CreadorConcreto();
+			Object Bloqueo = Creador.factoryMethod("Bloqueo1");
+			listaBloqueos.nuevoObj(Bloqueo);
+			System.out.println(listaBloqueos.CantObj(Bloqueo));
+		}
+	}
+	public void setBloqueo2(int cantBloqueo2){
+		int i;
+		for(i=0; i>cantBloqueo2; i++){
+			CreadorAbstracto Creador;
+			Creador = new CreadorConcreto();
+			Object Bloqueo = Creador.factoryMethod("Bloqueo2");
+			listaBloqueos.nuevoObj(Bloqueo);
+			System.out.println(listaBloqueos.CantObj(Bloqueo));
+		}
+	}
 }
-

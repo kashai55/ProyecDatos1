@@ -14,7 +14,7 @@ public class GameLogin {
 	Mundo mundo;
 	public void signup(String newUsername,String newPassword) throws TransformerConfigurationException, TransformerException{
 		xmlS.añadirUsuario(newUsername, newPassword);
-		Jugador j = new Jugador(newUsername,newPassword);
+		Jugador j = new Jugador(newUsername);
 		mundo.ListaJugadores.nuevoObj(j);
 		System.out.println("se agrego a " + j.getUserName() + "a la lista de jugadores");
 		mundo.ListaJugadores.notifyAll();
@@ -23,10 +23,14 @@ public class GameLogin {
 
 	public void login(String Username,String Password){
 		if (Password == xmlS.getContraseña(Username)){
-			Jugador j = new Jugador(Username,Password);
+			Jugador j = new Jugador(Username);
 			j.setMadera(xmlC.getMaderajugador(j.getClanActual().getClanName(), j.getUserName()));
-//			j.Hierro(xmlC.getHierrojugador(j.getClanActual().getClanName(), j.getUserName()));
-//			j.Piedra(xmlC.getPiedrajugador((j.getClanActual().getClanName(), j.getUserName()));
+			j.setHierro(xmlC.getHierrojugador(j.getClanActual().getClanName(), j.getUserName()));
+			j.setPiedra(xmlC.getPiedrajugador(j.getClanActual().getClanName(), j.getUserName()));
+			j.setArma1(xmlC.getArma1jugador(j.getClanActual().getClanName(), j.getUserName()));
+			j.setArma2(xmlC.getArma2jugador(j.getClanActual().getClanName(), j.getUserName()));
+			j.setBloqueo1(xmlC.getBloqueo1jugador(j.getClanActual().getClanName(), j.getUserName()));
+			j.setBloqueo2(xmlC.getBloqueo2jugador(j.getClanActual().getClanName(), j.getUserName()));
 			mundo.ListaJugadores.nuevoObj(j);
 			System.out.println("se agrego a " + j.getUserName() + "a la lista de jugadores");
 			mundo.ListaJugadores.notifyAll();

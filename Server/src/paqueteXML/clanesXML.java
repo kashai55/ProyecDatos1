@@ -338,4 +338,406 @@ public class clanesXML extends XML{
 			cerrarXML();
 		}
 	}
+	public void aumentarPiedraJugador(String nombreClan,String nombreJugador,int aumento) throws TransformerConfigurationException, TransformerException{
+		boolean clanEncontrado=false;
+		boolean jugadorEncontrado=false;
+		Node temp=raiz.getFirstChild();
+		while (temp!=null){
+			if (temp.getNodeName().equals(nombreClan)){
+				clanEncontrado=true;
+				Node temp2= temp.getFirstChild().getFirstChild();
+				while(temp2!=null){
+					if (temp2.getNodeName().equals(nombreJugador)){
+						jugadorEncontrado=true;
+						System.out.println("jugador " +nombreJugador+" encontrado");
+						String p=temp2.getFirstChild().getNextSibling().getTextContent();
+						int np=Integer.parseInt(p);
+						temp2.getFirstChild().getNextSibling().setTextContent(Integer.toString(np+aumento));
+						cerrarXML();
+						break;
+					}
+					else{
+						temp2=temp2.getNextSibling();
+					}
+				}
+				break;
+			}
+			else{
+				temp=temp.getNextSibling();
+			}
+		}
+		if (jugadorEncontrado==false){
+			System.out.println("Jugador no encontrado");
+		}
+		if (clanEncontrado==false){
+			System.out.println("Clan no encontrado");
+		}
+		if (clanEncontrado & jugadorEncontrado){
+			Node piedraClan=temp.getFirstChild().getNextSibling().getNextSibling();
+			String pClan=piedraClan.getTextContent();
+			int np=Integer.parseInt(pClan);
+			piedraClan.setTextContent(Integer.toString(np+aumento));
+			cerrarXML();
+		}
+	}
+	public void aumentarHierroJugador(String nombreClan,String nombreJugador,int aumento) throws TransformerConfigurationException, TransformerException{
+		boolean clanEncontrado=false;
+		boolean jugadorEncontrado=false;
+		Node temp=raiz.getFirstChild();
+		while (temp!=null){
+			if (temp.getNodeName().equals(nombreClan)){
+				clanEncontrado=true;
+				Node temp2= temp.getFirstChild().getFirstChild();
+				while(temp2!=null){
+					if (temp2.getNodeName().equals(nombreJugador)){
+						jugadorEncontrado=true;
+						System.out.println("jugador " +nombreJugador+" encontrado");
+						String h=temp2.getFirstChild().getNextSibling().getTextContent();
+						int nh=Integer.parseInt(h);
+						temp2.getFirstChild().getNextSibling().getNextSibling().setTextContent(Integer.toString(nh+aumento));
+						cerrarXML();
+						break;
+					}
+					else{
+						temp2=temp2.getNextSibling();
+					}
+				}
+				break;
+			}
+			else{
+				temp=temp.getNextSibling();
+			}
+		}
+		if (jugadorEncontrado==false){
+			System.out.println("Jugador no encontrado");
+		}
+		if (clanEncontrado==false){
+			System.out.println("Clan no encontrado");
+		}
+		if (clanEncontrado & jugadorEncontrado){
+			Node hierroClan=temp.getFirstChild().getNextSibling().getNextSibling().getNextSibling();
+			String hClan=hierroClan.getTextContent();
+			int nh=Integer.parseInt(hClan);
+			hierroClan.setTextContent(Integer.toString(nh+aumento));
+			cerrarXML();
+		}
+	}
+	public int getMaderaClan(String nombreClan){
+		boolean clanEncontrado=false;
+		Node temp=raiz.getFirstChild();
+		int madera=0;
+		while (temp!=null){
+			if (temp.getNodeName().equals(nombreClan)){
+				String m=temp.getFirstChild().getNextSibling().getTextContent();
+				madera=Integer.parseInt(m);
+				clanEncontrado=true;
+				System.out.print("clan encontrado");
+				break;
+			}
+			else{
+				temp=temp.getNextSibling();
+			}
+		}
+		if (clanEncontrado==false){
+			System.out.println("Clan no encontrado");
+		}
+		System.out.println(madera);
+		return madera;
+	}
+	public int getPiedraClan(String nombreClan){
+		boolean clanEncontrado=false;
+		Node temp=raiz.getFirstChild();
+		int piedra=0;
+		while (temp!=null){
+			if (temp.getNodeName().equals(nombreClan)){
+				String p=temp.getFirstChild().getNextSibling().getNextSibling().getTextContent();
+				piedra=Integer.parseInt(p);
+				clanEncontrado=true;
+				System.out.print("clan encontrado");
+				break;
+			}
+			else{
+				temp=temp.getNextSibling();
+			}
+		}
+		if (clanEncontrado==false){
+			System.out.println("Clan no encontrado");
+		}
+		System.out.println(piedra);
+		return piedra;
+	}
+	public int getHierroClan(String nombreClan){
+		boolean clanEncontrado=false;
+		Node temp=raiz.getFirstChild();
+		int hierro=0;
+		while (temp!=null){
+			if (temp.getNodeName().equals(nombreClan)){
+				String h=temp.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getTextContent();
+				hierro=Integer.parseInt(h);
+				clanEncontrado=true;
+				System.out.print("clan encontrado");
+				break;
+			}
+			else{
+				temp=temp.getNextSibling();
+			}
+		}
+		if (clanEncontrado==false){
+			System.out.println("Clan no encontrado");
+		}
+		System.out.println(hierro);
+		return hierro;
+	}
+	public int getArma1jugador(String nombreClan,String nombreJugador){
+		boolean clanEncontrado=false;
+		boolean jugadorEncontrado=false;
+		Node temp=raiz.getFirstChild();
+		int arma1=0;
+		while (temp!=null){
+			if (temp.getNodeName().equals(nombreClan)){
+				clanEncontrado=true;
+				Node temp2= temp.getFirstChild().getFirstChild();
+				while(temp2!=null){
+					if (temp2.getNodeName().equals(nombreJugador)){
+						String a1=temp2.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getTextContent();
+						arma1=Integer.parseInt(a1);
+						System.out.println("jugador encontrado");
+						jugadorEncontrado=true;
+						break;
+					}
+					else{
+						temp2=temp2.getNextSibling();
+					}
+				}
+				break;
+			}
+			else{
+				temp=temp.getNextSibling();
+			}
+		}
+		if (jugadorEncontrado==false){
+			System.out.println("Jugador no encontrado");
+		}
+		if (clanEncontrado==false){
+			System.out.println("Clan no encontrado");
+		}
+		System.out.println(arma1);
+		return arma1;
+	}
+	public int getArma2jugador(String nombreClan,String nombreJugador){
+		boolean clanEncontrado=false;
+		boolean jugadorEncontrado=false;
+		Node temp=raiz.getFirstChild();
+		int arma2=0;
+		while (temp!=null){
+			if (temp.getNodeName().equals(nombreClan)){
+				clanEncontrado=true;
+				Node temp2= temp.getFirstChild().getFirstChild();
+				while(temp2!=null){
+					if (temp2.getNodeName().equals(nombreJugador)){
+						String a2=temp2.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getTextContent();
+						arma2=Integer.parseInt(a2);
+						System.out.println("jugador encontrado");
+						jugadorEncontrado=true;
+						break;
+					}
+					else{
+						temp2=temp2.getNextSibling();
+					}
+				}
+				break;
+			}
+			else{
+				temp=temp.getNextSibling();
+			}
+		}
+		if (jugadorEncontrado==false){
+			System.out.println("Jugador no encontrado");
+		}
+		if (clanEncontrado==false){
+			System.out.println("Clan no encontrado");
+		}
+		System.out.println(arma2);
+		return arma2;
+	}
+	public int getBloqueo1jugador(String nombreClan,String nombreJugador){
+		boolean clanEncontrado=false;
+		boolean jugadorEncontrado=false;
+		Node temp=raiz.getFirstChild();
+		int bloqueo1=0;
+		while (temp!=null){
+			if (temp.getNodeName().equals(nombreClan)){
+				clanEncontrado=true;
+				Node temp2= temp.getFirstChild().getFirstChild();
+				while(temp2!=null){
+					if (temp2.getNodeName().equals(nombreJugador)){
+						String b1=temp2.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getTextContent();
+						bloqueo1=Integer.parseInt(b1);
+						System.out.println("jugador encontrado");
+						jugadorEncontrado=true;
+						break;
+					}
+					else{
+						temp2=temp2.getNextSibling();
+					}
+				}
+				break;
+			}
+			else{
+				temp=temp.getNextSibling();
+			}
+		}
+		if (jugadorEncontrado==false){
+			System.out.println("Jugador no encontrado");
+		}
+		if (clanEncontrado==false){
+			System.out.println("Clan no encontrado");
+		}
+		System.out.println(bloqueo1);
+		return bloqueo1;
+	}
+	public int getBloqueo2jugador(String nombreClan,String nombreJugador){
+		boolean clanEncontrado=false;
+		boolean jugadorEncontrado=false;
+		Node temp=raiz.getFirstChild();
+		int bloqueo2=0;
+		while (temp!=null){
+			if (temp.getNodeName().equals(nombreClan)){
+				clanEncontrado=true;
+				Node temp2= temp.getFirstChild().getFirstChild();
+				while(temp2!=null){
+					if (temp2.getNodeName().equals(nombreJugador)){
+						String b2=temp2.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getTextContent();
+						bloqueo2=Integer.parseInt(b2);
+						System.out.println("jugador encontrado");
+						jugadorEncontrado=true;
+						break;
+					}
+					else{
+						temp2=temp2.getNextSibling();
+					}
+				}
+				break;
+			}
+			else{
+				temp=temp.getNextSibling();
+			}
+		}
+		if (jugadorEncontrado==false){
+			System.out.println("Jugador no encontrado");
+		}
+		if (clanEncontrado==false){
+			System.out.println("Clan no encontrado");
+		}
+		System.out.println(bloqueo2);
+		return bloqueo2;
+	}
+	public int getMeritocraciajugador(String nombreClan,String nombreJugador){
+		boolean clanEncontrado=false;
+		boolean jugadorEncontrado=false;
+		Node temp=raiz.getFirstChild();
+		int meritocracia=0;
+		while (temp!=null){
+			if (temp.getNodeName().equals(nombreClan)){
+				clanEncontrado=true;
+				Node temp2= temp.getFirstChild().getFirstChild();
+				while(temp2!=null){
+					if (temp2.getNodeName().equals(nombreJugador)){
+						String me=temp2.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getTextContent();
+						meritocracia=Integer.parseInt(me);
+						System.out.println("jugador encontrado");
+						jugadorEncontrado=true;
+						break;
+					}
+					else{
+						temp2=temp2.getNextSibling();
+					}
+				}
+				break;
+			}
+			else{
+				temp=temp.getNextSibling();
+			}
+		}
+		if (jugadorEncontrado==false){
+			System.out.println("Jugador no encontrado");
+		}
+		if (clanEncontrado==false){
+			System.out.println("Clan no encontrado");
+		}
+		System.out.println(meritocracia);
+		return meritocracia;
+	}
+	public int getCoorXjugador(String nombreClan,String nombreJugador){
+		boolean clanEncontrado=false;
+		boolean jugadorEncontrado=false;
+		Node temp=raiz.getFirstChild();
+		int cx=0;
+		while (temp!=null){
+			if (temp.getNodeName().equals(nombreClan)){
+				clanEncontrado=true;
+				Node temp2= temp.getFirstChild().getFirstChild();
+				while(temp2!=null){
+					if (temp2.getNodeName().equals(nombreJugador)){
+						String x=temp2.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getTextContent();
+						cx=Integer.parseInt(x);
+						System.out.println("jugador encontrado");
+						jugadorEncontrado=true;
+						break;
+					}
+					else{
+						temp2=temp2.getNextSibling();
+					}
+				}
+				break;
+			}
+			else{
+				temp=temp.getNextSibling();
+			}
+		}
+		if (jugadorEncontrado==false){
+			System.out.println("Jugador no encontrado");
+		}
+		if (clanEncontrado==false){
+			System.out.println("Clan no encontrado");
+		}
+		System.out.println(cx);
+		return cx;
+	}
+	public int getCoorYjugador(String nombreClan,String nombreJugador){
+		boolean clanEncontrado=false;
+		boolean jugadorEncontrado=false;
+		Node temp=raiz.getFirstChild();
+		int cy=0;
+		while (temp!=null){
+			if (temp.getNodeName().equals(nombreClan)){
+				clanEncontrado=true;
+				Node temp2= temp.getFirstChild().getFirstChild();
+				while(temp2!=null){
+					if (temp2.getNodeName().equals(nombreJugador)){
+						String y=temp2.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getTextContent();
+						cy=Integer.parseInt(y);
+						System.out.println("jugador encontrado");
+						jugadorEncontrado=true;
+						break;
+					}
+					else{
+						temp2=temp2.getNextSibling();
+					}
+				}
+				break;
+			}
+			else{
+				temp=temp.getNextSibling();
+			}
+		}
+		if (jugadorEncontrado==false){
+			System.out.println("Jugador no encontrado");
+		}
+		if (clanEncontrado==false){
+			System.out.println("Clan no encontrado");
+		}
+		System.out.println(cy);
+		return cy;
+	}
 }
