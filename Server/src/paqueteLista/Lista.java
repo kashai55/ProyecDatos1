@@ -27,7 +27,7 @@ public class Lista {
 		}
 	}
 	
-	public Object buscar(Object ele){
+	public <Tipo>Tipo buscar(Tipo ele){
 		Nodo temp;
 		temp=this.head;
 		while (temp!=null){
@@ -43,7 +43,7 @@ public class Lista {
 			return null;
 		}
 		System.out.println(temp.ele);
-		return temp.ele;
+		return (Tipo) temp.ele;
 	}
 	
 	public int CantObj(Object ele){
@@ -111,7 +111,6 @@ public class Lista {
 				temp=temp.sig;
 				i++;
 			}
-			System.out.println(temp.ele);
 			return temp.ele;
 		}
 	}

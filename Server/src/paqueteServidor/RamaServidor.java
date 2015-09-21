@@ -7,7 +7,7 @@ public class RamaServidor extends Thread {
     private DataOutputStream salida;
     private BufferedReader entrada;
     private Servidor superservidor;
-
+    public String mensaje;
     
     public RamaServidor(Socket socket,Servidor superservidor) throws IOException {
         this.superservidor=superservidor;
@@ -26,17 +26,28 @@ public class RamaServidor extends Thread {
             System.out.println("Errror al desconectar el cliente "+socketCliente);
         }
     }
+    
+    public void enviarAcliente(String mensaje){
+    	try {
+			salida.writeUTF(mensaje);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
     @Override
     public void run() {
     	while(true){
 	    try {
 	    	
 	    	String mensajeEntrada=entrada.readLine();
-	    	String mensaje=mensajeEntrada.substring(2, mensajeEntrada.length());
-	    	if (mensaje.equals("hola")){
-	    		System.out.println("eso fue un hola");
+	    	mensaje=mensajeEntrada.substring(2, mensajeEntrada.length());
+	    	System.out.println("El mensaje recibido en el servidor es: "+mensaje);
+	    	if (mensaje.equals("posicion")){
+	    		salida.writeUTF("Adios!!\n");
 	    	}
-	    	salida.writeUTF("Hola!!  soy el servidor\n");
+	    	else{
+	    		salida.writeUTF("Eso no fue una posicion\n");
+	    	}
 	    	
 	    } 
 	    catch (IOException ex) {

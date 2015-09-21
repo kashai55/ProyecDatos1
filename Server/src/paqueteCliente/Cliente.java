@@ -29,18 +29,23 @@ public class Cliente {
 		}
 	}
 	
-	public void comunicarse(String mensaje){
+	public void comunicarse(String mensaje) throws InterruptedException{
+		while (true){
 		try {
-			
+			Thread.sleep(5000);
 	        salida.writeUTF(mensaje+"\n");
 	        String respuestaEntrada;
 	        respuestaEntrada = entrada.readLine();
 	        String respuesta=respuestaEntrada.substring(2, respuestaEntrada.length());
+	        if(respuesta.equals("Adios!!")){
+	        	System.out.println("actualizar jugadores");
+	        }
 	        System.out.println(" Servidor respondió : " + respuesta);
 
 		}
 		catch (IOException e) {
 			e.printStackTrace();
+		}
 		}
 	}
 
