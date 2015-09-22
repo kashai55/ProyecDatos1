@@ -7,6 +7,9 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import paqueteLista.Lista;
+import paqueteServidor.Separador;
+
 
 public class Cliente {
 	protected Socket sk;
@@ -37,8 +40,13 @@ public class Cliente {
 	        String respuestaEntrada;
 	        respuestaEntrada = entrada.readLine();
 	        String respuesta=respuestaEntrada.substring(2, respuestaEntrada.length());
-	        if(respuesta.equals("Adios!!")){
-	        	System.out.println("actualizar jugadores");
+	        Lista respuestaSeparada= new Separador().separar(respuesta);
+	        
+	        if(respuestaSeparada.Sub(0).toString().equals("ERR")){
+	        	System.out.println(respuestaSeparada.Sub(1).toString());
+	        }
+	        else if(respuestaSeparada.Sub(0).toString().equals("BN")){
+	        	System.out.println("cambiar pantallita sr.Rodriguez");
 	        }
 	        System.out.println(" Servidor respondió : " + respuesta);
 

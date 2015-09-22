@@ -2,12 +2,19 @@ package paqueteServidor;
 import java.io.*;
 import java.net.*;
 
+import javax.xml.transform.TransformerException;
+
+import paqueteLista.*;
+import paqueteCliente.*;
+
 public class RamaServidor extends Thread {
     private Socket socketCliente;
     private DataOutputStream salida;
     private BufferedReader entrada;
     private Servidor superservidor;
     public String mensaje;
+    
+    Jugador jugador;
     
     public RamaServidor(Socket socket,Servidor superservidor) throws IOException {
         this.superservidor=superservidor;
@@ -41,10 +48,36 @@ public class RamaServidor extends Thread {
 	    	
 	    	String mensajeEntrada=entrada.readLine();
 	    	mensaje=mensajeEntrada.substring(2, mensajeEntrada.length());
+	    	Lista mensajeSeparado= new Separador().separar(mensaje);
 	    	System.out.println("El mensaje recibido en el servidor es: "+mensaje);
-	    	if (mensaje.equals("posicion")){
-	    		salida.writeUTF("Adios!!\n");
+	    	
+	    	if ((mensajeSeparado.Sub(0)).toString().equals("SI")){              //sign in
+	    			String nombre=mensajeSeparado.Sub(1).toString();
+	    			String password=mensajeSeparado.Sub(2).toString();
+	    			superservidor.xmlSeguridad.añadirUsuario(nombre, password);
+	    			jugador=new Jugador(nombre);
+	    			salida.writeUTF("BN/bienvenido srRodriguez");
+				
 	    	}
+	    	
+	    	else if ((mensajeSeparado.Sub(0)).toString().equals("LI")){   		//log in
+	    		String nombre=mensajeSeparado.Sub(1).toString();
+				String password=mensajeSeparado.Sub(2).toString();
+				GameLogin logger=new GameLogin(superservidor.xmlClanes); 
+				if (password==superservidor.xmlSeguridad.getContraseña(nombre)){
+					jugador=logger.login(nombre, password);
+				}
+				else{
+					salida.writeUTF("ERR/Error nombre de usuario o contraseña incorrectos. Por favor vuelva a intentarlo");
+				}
+	    	}
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
 	    	else{
 	    		salida.writeUTF("Eso no fue una posicion\n");
 	    	}
@@ -53,6 +86,9 @@ public class RamaServidor extends Thread {
 	    catch (IOException ex) {
 	    	ex.printStackTrace();
 	    	}
+	    catch (TransformerException e) {
+			e.printStackTrace();
+		}
     	}
     }
 }
