@@ -168,6 +168,10 @@ public class clanesXML extends XML{
 				y.appendChild(documento.createTextNode(poscY));
 				nuevoJugador.appendChild(y);
 				
+				Element clanesJugador=documento.createElement("Clanes");
+				clanesJugador.appendChild(documento.createTextNode("C1/C2/C3"));
+				nuevoJugador.appendChild(clanesJugador);
+				
 				//añadimos el nuevo jugador al nodo de jugadores del clan
 				jugadoresClan.appendChild(nuevoJugador);
 				
@@ -571,7 +575,9 @@ public class clanesXML extends XML{
 				Node temp2= temp.getFirstChild().getFirstChild();
 				while(temp2!=null){
 					if (temp2.getNodeName().equals(nombreJugador)){
-						String b1=temp2.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getTextContent();
+						String b1=temp2.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling
+
+().getTextContent();
 						bloqueo1=Integer.parseInt(b1);
 						System.out.println("jugador encontrado");
 						jugadorEncontrado=true;
@@ -607,7 +613,9 @@ public class clanesXML extends XML{
 				Node temp2= temp.getFirstChild().getFirstChild();
 				while(temp2!=null){
 					if (temp2.getNodeName().equals(nombreJugador)){
-						String b2=temp2.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getTextContent();
+						String b2=temp2.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling
+
+().getNextSibling().getTextContent();
 						bloqueo2=Integer.parseInt(b2);
 						System.out.println("jugador encontrado");
 						jugadorEncontrado=true;
@@ -643,7 +651,9 @@ public class clanesXML extends XML{
 				Node temp2= temp.getFirstChild().getFirstChild();
 				while(temp2!=null){
 					if (temp2.getNodeName().equals(nombreJugador)){
-						String me=temp2.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getTextContent();
+						String me=temp2.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling
+
+().getNextSibling().getNextSibling().getTextContent();
 						meritocracia=Integer.parseInt(me);
 						System.out.println("jugador encontrado");
 						jugadorEncontrado=true;
@@ -679,7 +689,9 @@ public class clanesXML extends XML{
 				Node temp2= temp.getFirstChild().getFirstChild();
 				while(temp2!=null){
 					if (temp2.getNodeName().equals(nombreJugador)){
-						String x=temp2.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getTextContent();
+						String x=temp2.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling
+
+().getNextSibling().getNextSibling().getNextSibling().getTextContent();
 						cx=Integer.parseInt(x);
 						System.out.println("jugador encontrado");
 						jugadorEncontrado=true;
@@ -715,7 +727,9 @@ public class clanesXML extends XML{
 				Node temp2= temp.getFirstChild().getFirstChild();
 				while(temp2!=null){
 					if (temp2.getNodeName().equals(nombreJugador)){
-						String y=temp2.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getTextContent();
+						String y=temp2.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling
+
+().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getTextContent();
 						cy=Integer.parseInt(y);
 						System.out.println("jugador encontrado");
 						jugadorEncontrado=true;
@@ -739,5 +753,42 @@ public class clanesXML extends XML{
 		}
 		System.out.println(cy);
 		return cy;
+	}
+	public String getClanesJugador(String nombreClan,String nombreJugador){
+		boolean clanEncontrado=false;
+		boolean jugadorEncontrado=false;
+		Node temp=raiz.getFirstChild();
+		String clanesJugador="";
+		while (temp!=null){
+			if (temp.getNodeName().equals(nombreClan)){
+				clanEncontrado=true;
+				Node temp2= temp.getFirstChild().getFirstChild();
+				while(temp2!=null){
+					if (temp2.getNodeName().equals(nombreJugador)){
+						clanesJugador=temp2.getFirstChild().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling
+
+().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getNextSibling().getTextContent();
+						System.out.println("jugador encontrado");
+						jugadorEncontrado=true;
+						break;
+					}
+					else{
+						temp2=temp2.getNextSibling();
+					}
+				}
+				break;
+			}
+			else{
+				temp=temp.getNextSibling();
+			}
+		}
+		if (jugadorEncontrado==false){
+			System.out.println("Jugador no encontrado");
+		}
+		if (clanEncontrado==false){
+			System.out.println("Clan no encontrado");
+		}
+		System.out.println(clanesJugador);
+		return clanesJugador;
 	}
 }
