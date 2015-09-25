@@ -2,8 +2,15 @@ package paqueteServidor;
 
 import paqueteCliente.Jugador;
 import paqueteXML.*;
-
+/**
+ * 
+ * @author Kevin
+ *
+ */
 public class GameLogin {
+	/**
+	 * Atributos de la clase
+	 */
 	Jugador jug;
 	XMLusuarios xmlS;
 	clanesXML xmlC;
@@ -11,6 +18,12 @@ public class GameLogin {
 	public GameLogin(clanesXML xml){
 		this.xmlC=xml;
 	}
+	/**
+	 * retorna una nueva instacia de jugardor con sus items de una partida anterior
+	 * @param Username es el string con el ombre de usuario el jugador
+	 * @param Password es la contraseña del jugador
+	 * @return un jugador con sus items cargados
+	 */
 	public Jugador login(String Username,String Password){
 		Jugador j = new Jugador(Username);
 		j.setMadera(xmlC.getMaderajugador(j.getClanActual().getClanName(), j.getUserName()));
@@ -25,8 +38,6 @@ public class GameLogin {
 		mundo.ListaJugadores.notifyAll();
 		System.out.println(j.getUserName() + " se ha unido al mundo");
 		return j;
-		
-		
 	}
 
 }

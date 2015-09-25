@@ -7,9 +7,16 @@ import javax.xml.transform.TransformerException;
 import paqueteLista.*;
 import paqueteObjetos.*;
 import paqueteXML.*;
-
-
+/**
+ * 
+ * @author Kevin
+ *
+ */
 public class Jugador{
+	
+/**
+ * Atributos de la clase Jugador
+ */
 
 	protected String userName;
 	protected int madera=0;
@@ -17,26 +24,39 @@ public class Jugador{
 	protected int piedra=0;
 	protected double posx;
 	protected double posy;
-	
+	protected boolean lider=false;
 	protected Clan clanActual;
 	Mundo mundo;
 	
 	public Lista listaClanes = new Lista();
 	public Lista listaBloqueos = new Lista();
 	public Lista listaArmas = new Lista();
-	
+	/**
+	 * Constructor de la Clase Jugador, recibe un string con el nombre de usuario del jugador
+	 * @param un nombre de usuario del jugador
+	 */
 	public Jugador(String un){
 		userName=un;
 	}
+	/**
+	 * Crea una nueva instancia de clan y el objeto creaado es agregado a lista de clanes del jugador, ademas se le asigna true al atributo lider
+	 * @param clanName
+	 * @throws TransformerConfigurationException
+	 * @throws TransformerException
+	 */
 	public void crearClan(String clanName) throws TransformerConfigurationException, TransformerException{
 		Clan clan = new Clan("Lolol",this);
 		this.listaClanes.nuevoObj(clan);
+		this.setLiderasgo();
 	}
 //	public String ConectarseClan(String nombreClan){
 //		mundo.ListaClanes.buscar(nombreClan);
 //		return 
 //	}
-
+	/**
+	 * Recibe un String con el tipo de arma que desea crear, si cuenta con los recursos se crea el arma y se le restan a los recursos del jugador y del clan, si no, no crea el objeto
+	 * @param arma String con el tipo de arma que desea crear
+	 */
 	public void crearArmas(String arma){
 		CreadorAbstracto Creador;
 		Creador = new CreadorConcreto();
@@ -76,7 +96,11 @@ public class Jugador{
 			System.out.println("Error, el arma deseada no existe");
 		}
 	}
-	
+	/**
+	 * 	/**
+	 * Recibe un String con el tipo de bloqueo que desea crear, si cuenta con los recursos se crea el arma y se le restan a los recursos del jugador y del clan, si no, no crea el objeto
+	 * @param bloqueo String con el tipo de bloqueo que desea crear
+	 */
 	public void crearBloqueo(String bloqueo){
 		CreadorAbstracto Creador;
 		Creador = new CreadorConcreto();
@@ -118,6 +142,12 @@ public class Jugador{
 		}
 		
 	}
+	/**
+	 * Recibe un objeto de tipo recurso el cual puede ser Madera,Hierro o Piedra y se agrega al inventario del Jugador
+	 * @param r objeto de tipo recurso el cual puede ser Madera,Hierro o Piedra
+	 * @throws TransformerConfigurationException
+	 * @throws TransformerException
+	 */
 	public void recolectar(Recursos r) throws TransformerConfigurationException, TransformerException{
 		if (r.getName()=="Madera"){
 			this.setMadera(1);
@@ -146,39 +176,89 @@ public class Jugador{
 //	}
 //	public void realizarAccion(){
 //	}
+	/**
+	 * Obtiene el nombre de usuario ingresado por el usario
+	 * @return el nombre de usuario
+	 */
 	public String getUserName(){
 		System.out.println(userName);
 		return userName;
 	}
+	/**
+	 * Obtiene el Clan actual en el cual el jugador esta jugando
+	 * @return el clan con el cual el jugador esta jugando actualmente
+	 */
 	public Clan getClanActual(){
 		System.out.println("este es tu clan actual: " + clanActual.getClanName());
 		return clanActual;
 	}
+	/**
+	 * Obtiene la cantidad de madera que posee el jugador
+	 * @return cantidad del recurso madera del Jugador
+	 */
 	public  int getMadera(){
 		System.out.println(madera);
 		return this.madera;
 	}
+	/**
+	 * Obtiene la cantidad de hierro que posee el jugador
+	 * @return cantidad del recurso hierro del Jugador
+	 */
 	public  int getHierro(){
 		System.out.println(madera);
 		return this.hierro;
 	}
+	/**
+	 * Obtiene la cantidad de piedra que posee el jugador
+	 * @return cantidad del recurso piedra del Jugador
+	 */
 	public  int getPiedra(){
 		System.out.println(piedra);
 		return this.piedra;
 	}
+	/**
+	 * Obtiene un true si el jugador es el lider del clan creado o false si no lo es
+	 * @return true o false
+	 */
+	public boolean getLiderasgo(){
+		return lider;
+	}
+	/**
+	 * Permite asignar la cantidad de madera de un jugador cuando recoje un recurso o carga una partida
+	 * @param cMadera cantidad del recurso madera que se va a agregar
+	 * @return la suma de la madera contenida mas la que va a ser adicionada
+	 */
 	public  int setMadera(int cMadera){
 		return this.madera= this.madera+cMadera;
 	}
+	/**
+	 * Permite asignar la cantidad de hierro de un jugador cuando recoje un recurso o carga una partida
+	 * @param cHierro cantidad del recurso Hierro que se va a agregar
+	 * @return la suma de la hierro contenida mas la que va a ser adicionada
+	 */
 	public  int setHierro(int cHierro){
 		return this.hierro= this.hierro+cHierro;
 	}
+	/**
+	 * Permite asignar la cantidad de piedra de un jugador cuando recoje un recurso o carga una partida
+	 * @param cPiedra cantidad del recurso piedra que se va a agregar
+	 * @return la suma de la piedra contenida mas la que va a ser adicionada
+	 */
 	public  int setPiedra(int cPiedra){
 		return this.piedra= this.piedra+cPiedra;
 	}
+	/**
+	 * Obtiene la posicion en x de un Jugador
+	 * @return posicion en x del jugador
+	 */
 	public double getPoscx(){
 		System.out.println(posx);
 		return posx;
 	}
+	/**
+	 * Obtiene la posicion en y de un Jugador
+	 * @return posicion en y del jugador
+	 */
 	public double getPoscy(){
 		System.out.println(posy);
 		return posy;
@@ -191,6 +271,10 @@ public class Jugador{
 //		System.out.println(posy);
 //		return posy;
 //	}
+	/**
+	 * Asigna la cantidad de armas del tipo 1 que el jugador previamente poseia al cargar el juego
+	 * @param cantArma1 cantidad de armas del tipo 1 que el jugador poseia
+	 */
 	public void setArma1(int cantArma1){
 		int i;
 		for(i=0; i>cantArma1; i++){
@@ -202,6 +286,10 @@ public class Jugador{
 			
 		}
 	}
+	/**
+	 * Asigna la cantidad de armas del tipo 2 que el jugador previamente poseia al cargar el juego
+	 * @param cantArma2 cantidad de armas del tipo 2 que el jugador poseia
+	 */
 	public void setArma2(int cantArma2){
 		int i;
 		for(i=0; i>cantArma2; i++){
@@ -212,6 +300,10 @@ public class Jugador{
 			System.out.println(listaArmas.CantObj(Arma));
 		}
 	}
+	/**
+	 * Asigna la cantidad de bloqueos del tipo 1 que el jugador previamente poseia al cargar el juego
+	 * @param cantBloqueo1 cantidad de bloqueos del tipo 1 que el jugador poseia
+	 */
 	public void setBloqueo1(int cantBloqueo1){
 		int i;
 		for(i=0; i>cantBloqueo1; i++){
@@ -222,6 +314,10 @@ public class Jugador{
 			System.out.println(listaBloqueos.CantObj(Bloqueo));
 		}
 	}
+	/**
+	 * Asigna la cantidad de bloqueos del tipo 2 que el jugador previamente poseia al cargar el juego
+	 * @param cantBloqueo1 cantidad de bloqueos del tipo 2 que el jugador poseia
+	 */
 	public void setBloqueo2(int cantBloqueo2){
 		int i;
 		for(i=0; i>cantBloqueo2; i++){
@@ -232,4 +328,14 @@ public class Jugador{
 			System.out.println(listaBloqueos.CantObj(Bloqueo));
 		}
 	}
+	/**
+	 * Asigna true si el jugador es lider del clan 
+	 * @return true
+	 */
+	public boolean setLiderasgo(){
+		return lider=true;
+	}
+	/**
+	 * @author Kevin
+	 */
 }

@@ -1,7 +1,16 @@
 package paqueteObjetos;
-
+/**
+ * 
+ * @author Kevin
+ * De esta clase hereda de la clase CreadorAbstracto sus metodos
+ *
+ */
 public class CreadorConcreto extends CreadorAbstracto{
-	
+	/**
+	 * Crea un objeto segun el Objeto que se desee crear
+	 * @param recive un string con el nombre de la clase que se desea crear
+	 * @return Un objeto creado del tipo del string ingresado
+	 */
     public Object factoryMethod(String tipo){
     	
     	Object objeto = null;

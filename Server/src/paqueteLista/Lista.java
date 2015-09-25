@@ -1,10 +1,16 @@
 package paqueteLista;
-
+/**
+ * 
+ * @author Kevin
+ *
+ */
 public class Lista {
 	public Nodo head;
 	public Nodo tail;
 	
-	
+	/**
+	 * Constructor de la clase Lista
+	 */
 	public Lista(){
 		head=tail=null;
 	}
@@ -12,7 +18,10 @@ public class Lista {
 	public boolean estaVacia(){
 		return head==null;
 	}
-	
+	/**
+	 * Agrega un nuevo objeto al final de la lista
+	 * @param ele Es el objeto que se va a agregar en la lista
+	 */
 	public void nuevoObj(Object ele){
 		Nodo nuevo= new Nodo(ele);
 		if (!estaVacia()){
@@ -26,7 +35,11 @@ public class Lista {
 			nuevo.indice=0;
 		}
 	}
-	
+	/**
+	 * Retorna el tipo de clase que se ingresa en "ele" y retorna ese tipo cuando el elemento es encontrado
+	 * @param ele Un elemento de cualquier tipo.
+	 * @return retorna ese tipo de elemento cuando el elemento es encontrado
+	 */
 	public <Tipo>Tipo buscar(Tipo ele){
 		Nodo temp;
 		temp=this.head;
@@ -45,7 +58,11 @@ public class Lista {
 		System.out.println(temp.ele);
 		return (Tipo) temp.ele;
 	}
-	
+	/**
+	 * Retorna la cantidad de elementos del tipo del objeto que fue buscado
+	 * @param ele Es el objeto que se va a utilizar para coprobar y realizar el contador cuando el elemento del nodo claza con el buscado
+	 * @return la cantidad de elementos del tipo del objeto que fue buscado
+	 */
 	public int CantObj(Object ele){
 		Nodo temp;
 		temp=head;
@@ -62,7 +79,10 @@ public class Lista {
 		System.out.println("se encuentran " + i + " del elemento buscado");
 		return i;
 	}
-	
+	/**
+	 * Busca un elemento de la lista y lo elimina de la misma
+	 * @param ele Es el objeto que se va a borrar de la lista
+	 */
 	public void EliminarObj(Object ele){
 		Nodo temp;
 		temp=head;
@@ -95,6 +115,11 @@ public class Lista {
 			}
 		}
 	}
+	/**
+	 * Brinda el elemento ubicado en el indice del nodo que fue ingresado
+	 * @param n numero del indice del la lista
+	 * @return elemento ubicado en el indice del nodo que fue ingresado
+	 */
 	public Object Sub(int n){
 		if (n<0){
 			System.out.println("Error");
@@ -114,6 +139,9 @@ public class Lista {
 			return temp.ele;
 		}
 	}
+	/**
+	 * Imprime en pantalla los elementos contenidos en la lista
+	 */
 	public void Imprimir(){
 		Nodo temp;
 		temp=this.head;
