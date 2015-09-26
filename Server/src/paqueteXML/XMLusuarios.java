@@ -13,6 +13,12 @@ public class XMLusuarios extends XML {
 	Document documento;
 	Element raiz;
 	
+	/**
+	 * esta funcion se encarga de crear un XML que almacena
+	 * la contraseña y el nombre del cada jugador
+	 * @param name
+	 */
+	
 	public XMLusuarios(String nombreXML) {
 		super(nombreXML);
 		//Obtenemos la referencia al documento que queremos modificar
@@ -21,6 +27,14 @@ public class XMLusuarios extends XML {
 		//Obtiene el elemento raíz del documento
 		this.raiz = super.raiz; 
 	}
+	
+	/**
+	 * funcion que crea y mete en el XML los usuarios del juego
+	 * @param nombreNuevo
+	 * @param contraseñaNueva
+	 * @throws TransformerConfigurationException
+	 * @throws TransformerException
+	 */
 	
 	public void añadirUsuario(String nombreNuevo, String contraseñaNueva) throws TransformerConfigurationException, TransformerException{
 		//Creamos los elementos a añadir
@@ -34,6 +48,12 @@ public class XMLusuarios extends XML {
 		//"Cerramos" el xml
 		cerrarXML();
 	}
+	
+	/**
+	 * esta funcion retorna en string la contraseña del jugador que se necesita
+	 * @param nombre
+	 * @return la contraseña del jugador que se necesita
+	 */
 	
 	public String getContraseña(String nombre){
 		String contraseña="";
