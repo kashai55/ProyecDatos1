@@ -2,11 +2,22 @@ package paqueteServidor;
 
 import paqueteLista.*;
 
+/**
+ * 
+ * @author Ricardo
+ *
+ */
 public class Separador {
 
 	public Separador() {	}
 	
-	
+	/**
+	 * separa la informacion que contiene un string, esta 
+	 * informacion debe estar separada por el signo "/", por ejemplo "hola/como/estas" e inserta esta 
+	 * informacion en una lista
+	 * @param mensaje
+	 * @return
+	 */
 	public Lista separar(String mensaje){
 		Lista lista=new Lista();
 		int i=0;
@@ -25,11 +36,15 @@ public class Separador {
 		}
 		temp=mensaje.substring(i, j);
 		lista.nuevoObj(temp);
-		lista.Sub(0);
-		lista.Sub(1);
-		lista.Sub(2);
 		return lista;
 	}
+	/**
+	 * realiza la misma accion que separar, pero con la diferencia que la informacion del string
+	 * debe estar separada de la siguiente manera: "letraNUMERO/letraNUMERO/letraNUMERO...",  separa
+	 * e inserta los numeros en una lista
+	 * @param mensaje
+	 * @return
+	 */
 	public Lista separarRecurso(String mensaje){
 		Lista lista=new Lista();
 		int i=1;
@@ -48,9 +63,6 @@ public class Separador {
 		}
 		temp=mensaje.substring(i, j);
 		lista.nuevoObj(temp);
-		lista.Sub(0);
-		lista.Sub(1);
-		lista.Sub(2);
 		return lista;
 	}
 }

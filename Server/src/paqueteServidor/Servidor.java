@@ -4,12 +4,20 @@ import java.io.*;
 import java.net.*;
 import paqueteXML.*;
 
+/**
+ * 
+ * @author Ricardo
+ *
+ */
 public class Servidor implements Runnable{
     ServerSocket socketServidor;
     
     XMLusuarios xmlSeguridad;
     clanesXML xmlClanes;
     
+    /**
+     * Constructor, este inicializa los xml's y el socketServidor
+     */
     public Servidor(){
     	try {
     		xmlSeguridad= new XMLusuarios("Seguridad");
@@ -23,6 +31,11 @@ public class Servidor implements Runnable{
     
 
 	@Override
+	/**
+	 * metodo heredado de la clase Runnable por lo que es lo que se va a hacer en un hilo.
+	 * Este metodo espera a que un cliente se conecte via socket, este socket es enviado a una 
+	 * RamaServidor, cada RamaServidor se encarga de manejar los mensajes de cada cliente asociado
+	 */
 	public void run() {
 		while (true) {
 			try {
