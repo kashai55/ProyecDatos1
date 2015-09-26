@@ -4,7 +4,10 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.proyectdatos1.pandoraunderattack.LogInActivity">
+
+    tools:context="com.proyectdatos1.pandoraunderattack.LogInActivity"
+    android:focusable="true"
+    android:longClickable="false">
 
     <EditText
         android:layout_width="wrap_content"
@@ -23,8 +26,7 @@
         android:id="@+id/editText5"
         android:editable="true"
         android:hint="Password"
-        android:layout_marginTop="81dp"
-        android:layout_below="@+id/editText4"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -34,9 +36,9 @@
         android:text="Enter"
         android:id="@+id/buttonEnter"
         android:onClick="onClickEnter"
+        android:layout_marginBottom="42dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="59dp" />
+        android:layout_centerHorizontal="true" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -44,6 +46,10 @@
         android:id="@+id/imageButtonBackMenu"
         android:onClick="onClickBackMenu"
         android:src="@android:drawable/ic_menu_revert"
-        android:layout_toStartOf="@+id/editText5" />
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/editText5"
+        android:layout_toStartOf="@+id/editText5"
+        android:layout_marginRight="59dp"
+        android:layout_marginEnd="59dp" />
 
 </RelativeLayout>

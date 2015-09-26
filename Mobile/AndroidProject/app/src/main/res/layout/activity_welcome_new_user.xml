@@ -14,9 +14,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:editable="true"
-        android:text=" "
         android:textSize="18dp"
-        android:textColor="#000000" />
+        android:textColor="#000000"
+        android:text=" " />
 
     <Button
         android:layout_width="wrap_content"
@@ -24,9 +24,10 @@
         android:text="Create New Clan"
         android:id="@+id/buttonNewClan"
         android:onClick="onClickCreateNewClan"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/buttonConnectClan"
-        android:layout_marginBottom="124dp" />
+        android:layout_below="@+id/buttonConnectClan"
+        android:layout_alignRight="@+id/buttonConnectClan"
+        android:layout_alignEnd="@+id/buttonConnectClan"
+        android:layout_marginTop="122dp" />
 
     <Button
         android:layout_width="wrap_content"

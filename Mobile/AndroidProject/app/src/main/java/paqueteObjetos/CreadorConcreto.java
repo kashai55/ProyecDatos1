@@ -8,13 +8,13 @@ public class CreadorConcreto extends CreadorAbstracto{
     	
     	switch(tipo){
     		
-    		case "Recurso1": objeto =new Recurso1();
+    		case "Madera": objeto =new Madera();
     		break;
     		
-    		case "Recurso2": objeto =new Recurso2();
+    		case "Piedra": objeto =new Piedra();
     		break;
     		
-    		case "Recurso3": objeto =new Recurso3();
+    		case "Hierro": objeto =new Hierro();
     		break;
 
     		case "Arma1": objeto =new Arma1();
@@ -22,6 +22,13 @@ public class CreadorConcreto extends CreadorAbstracto{
     		
     		case "Arma2": objeto =new Arma2();
     		break;
+    		
+    		case "Bloqueo1": objeto =new Bloqueo1();
+    		break;
+    		
+    		case "Bloqueo2": objeto =new Bloqueo2();
+    		break;
+    		
     	}
     	return objeto;
 

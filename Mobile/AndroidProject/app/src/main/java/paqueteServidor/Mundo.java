@@ -1,10 +1,11 @@
 package paqueteServidor;
 
-import paqueteLista.Lista;
+import paqueteLista.*;
 
 
 public class Mundo {
-	public Lista ListaClanes;
-	public Lista ListaRecursos;
-	public Lista ListaArmas;
+	public Lista ListaJugadores = new Lista();
+	public Lista ListaClanes= new Lista();
+	public Lista ListaRecursos=new Lista();
+	public Lista ListaArmas=new Lista();
 }

@@ -5,14 +5,8 @@ public class Nodo {
 	Nodo sig;
 	Nodo ant;
 	int indice;
-	String info;
 	
 	public Nodo(Object i){
-	this(i,null,null);	
-	}
-	public Nodo(Object i, Nodo n,Nodo m){
-		ele=i;
-		sig=n;
-		ant=m;
+		this.ele=i;
 	}
 }

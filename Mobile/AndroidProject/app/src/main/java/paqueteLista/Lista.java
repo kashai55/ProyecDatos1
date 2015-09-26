@@ -14,17 +14,24 @@ public class Lista {
 	}
 	
 	public void nuevoObj(Object ele){
+		Nodo nuevo= new Nodo(ele);
 		if (!estaVacia()){
-			tail= new Nodo(ele,null,tail);
-			tail.ant.sig= tail;
+			this.tail.sig=nuevo;
+			nuevo.ant=tail;
+			nuevo.indice = tail.indice+1;
+			tail=nuevo;
 		}
-		else head = tail = new Nodo(ele);
+		else{
+			this.head = this.tail = nuevo;
+			nuevo.indice=0;
+		}
 	}
-	public Object buscar(Object ele){
+	
+	public <Tipo>Tipo buscar(Tipo ele){
 		Nodo temp;
-		temp=head;
+		temp=this.head;
 		while (temp!=null){
-			if (temp.ele != ele){
+			if (!temp.ele.equals(ele)){
 				temp=temp.sig;
 			}
 			else{
@@ -36,10 +43,59 @@ public class Lista {
 			return null;
 		}
 		System.out.println(temp.ele);
-		return temp.ele;
+		return (Tipo) temp.ele;
 	}
 	
-	public Nodo Sub(int n){
+	public int CantObj(Object ele){
+		Nodo temp;
+		temp=head;
+		int i=0;
+		while (temp!=null){
+			if (!temp.ele.getClass().equals(ele.getClass())){
+				temp=temp.sig;
+			}
+			else{
+				i=i+1;
+				temp=temp.sig;
+			}
+		}
+		System.out.println("se encuentran " + i + " del elemento buscado");
+		return i;
+	}
+	
+	public void EliminarObj(Object ele){
+		Nodo temp;
+		temp=head;
+		if (head!=null){
+			if(ele.equals(head.ele)){
+				this.head=head.sig;
+			}
+			else if(ele.equals(tail.ele)){
+				this.tail=tail.ant;
+			}
+			else{
+				boolean borrado=false;
+				while (temp!=null){
+					if (!temp.ele.equals(ele)){
+						if ( borrado){
+							temp.indice--;
+							temp=temp.sig;
+						}
+						else{
+							temp=temp.sig;
+						}
+					}
+					else{
+						temp.ant.sig=temp.sig;
+						temp.sig.ant=temp.ant;
+						borrado=true;
+						temp=temp.sig;
+					}
+				}
+			}
+		}
+	}
+	public Object Sub(int n){
 		if (n<0){
 			System.out.println("Error");
 			return null;
@@ -51,11 +107,24 @@ public class Lista {
 		else{
 			Nodo temp= this.head;
 			int i=0;
-			while (i<temp.indice){
-				i++;
+			while (i<n){
 				temp=temp.sig;
+				i++;
 			}
-			return temp;
+			return temp.ele;
 		}
+	}
+	public void Imprimir(){
+		Nodo temp;
+		temp=this.head;
+		if (head==null){
+			System.out.println("Lista vacia");
+			return;
+		}
+		while(temp!=this.tail){
+			System.out.println(temp.ele.toString());
+			temp=temp.sig;
+		}
+		System.out.println(this.tail.ele.toString());
 	}
 }

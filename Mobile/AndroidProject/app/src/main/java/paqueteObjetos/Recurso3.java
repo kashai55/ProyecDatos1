@@ -9,6 +9,11 @@ public class Recurso3 implements Recursos{
 	}
 
 	@Override
+	public void SetCoord(float x, float y) {
+
+	}
+
+	@Override
 	public String getName() {
 		return nombre;
 	}

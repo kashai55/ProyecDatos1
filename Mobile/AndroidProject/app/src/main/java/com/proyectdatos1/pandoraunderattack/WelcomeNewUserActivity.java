@@ -5,6 +5,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+/**
+ * Clase que genera la actividad para mostrar
+ * en ventana los botones para ingresar a CREAR NUEVO CLAN o CONECTARSE
+ *
+ * @author Gustavo Fallas Carrera
+ */
 public class WelcomeNewUserActivity extends AppCompatActivity {
 
     @Override

@@ -11,22 +11,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign in"
-        android:layout_marginTop="213dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+        android:layout_marginTop="37dp"
         android:onClick="onClickSignIn"
-        />
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/buttonLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Log in"
-        android:layout_marginTop="65dp"
-        android:layout_below="@+id/buttonSignin"
-        android:layout_alignEnd="@+id/buttonSignin"
+        android:layout_marginTop="62dp"
         android:onClick="onClickLogIn"
-        />
+        android:layout_below="@+id/buttonSignin"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -36,9 +34,8 @@
         android:editable="false"
         android:textColor="#FF0099CC"
         android:textSize="25dp"
+        android:layout_marginTop="37dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="86dp"
-        />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

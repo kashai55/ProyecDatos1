@@ -14,7 +14,9 @@
         android:hint="New User Name"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp" />
+        android:layout_marginTop="60dp"
+        android:maxLines="1"
+        android:minLines="1" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -40,9 +42,10 @@
         android:editable="true"
         android:minLines="4"
         android:hint="Confirm Password"
-        android:layout_marginBottom="57dp"
+        android:layout_marginBottom="53dp"
         android:layout_above="@+id/buttonSave"
-        android:layout_alignStart="@+id/editTextPass" />
+        android:layout_toRightOf="@+id/imageButtonBackMenuSIn"
+        android:layout_toEndOf="@+id/imageButtonBackMenuSIn" />
 
     <Button
         style="?android:attr/buttonStyleSmall"

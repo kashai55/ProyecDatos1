@@ -9,6 +9,11 @@ public class Recurso2 implements Recursos{
 	}
 
 	@Override
+	public void SetCoord(float x, float y) {
+
+	}
+
+	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
 		return nombre;

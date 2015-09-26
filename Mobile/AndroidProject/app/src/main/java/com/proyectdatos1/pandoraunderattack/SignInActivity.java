@@ -5,6 +5,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+/**
+ * Clase que genera la actividad para mostrar
+ * en ventana los textos y boton para ingresar a crear nueva cuenta.
+ *
+ * @author Gustavo Fallas Carrera
+ */
 public class SignInActivity extends AppCompatActivity {
 
     @Override

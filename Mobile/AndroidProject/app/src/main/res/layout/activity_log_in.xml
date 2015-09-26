@@ -9,7 +9,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText4"
+        android:id="@+id/editTextNameUser"
         android:editable="true"
         android:hint="User Name"
         android:layout_centerHorizontal="true"
@@ -20,11 +20,11 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/editText5"
+        android:id="@+id/editTextPassUser"
         android:editable="true"
         android:hint="Password"
-        android:layout_marginTop="81dp"
-        android:layout_below="@+id/editText4"
+        android:layout_marginTop="70dp"
+        android:layout_below="@+id/editTextNameUser"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -33,10 +33,10 @@
         android:layout_height="wrap_content"
         android:text="Enter"
         android:id="@+id/buttonEnter"
-        android:onClick="onClickEnter"
+        android:onClick="onClickCreateNewAccount"
+        android:layout_marginBottom="58dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="59dp" />
+        android:layout_centerHorizontal="true" />
 
     <ImageButton
         android:layout_width="wrap_content"
