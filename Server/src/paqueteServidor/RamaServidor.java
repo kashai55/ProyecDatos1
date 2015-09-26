@@ -105,7 +105,7 @@ public class RamaServidor extends Thread {
 	    		String nombreClan=(mensajeSeparado.Sub(1)).toString();
 	    		String latitud=(mensajeSeparado.Sub(2)).toString();
 	    		String longitud=(mensajeSeparado.Sub(3)).toString();
-	    		superservidor.xmlClanes.añadirClan(nombreClan, nombreCreador, latitud, longitud);
+	    		superservidor.xmlClanes.crearClan(nombreClan, nombreCreador, latitud, longitud);
 	    		salida.writeUTF("CLCR\n");
 	    	}
 	    	else{

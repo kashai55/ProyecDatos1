@@ -146,7 +146,7 @@ public class clanesXML extends XML{
 	 * @throws TransformerException
 	 */
 
-	public void aÃ±adirJugador(String nombreClan,String nombreJugador,String poscX, String poscY) throws TransformerConfigurationException, TransformerException{
+	public void añadirJugador(String nombreClan,String nombreJugador,String poscX, String poscY) throws TransformerConfigurationException, TransformerException{
 		boolean clanEncontrado=false;
 		Node temp=raiz.getFirstChild();
 		while (temp!=null){
