@@ -40,18 +40,7 @@ public class clanesXML extends XML{
 	 * @throws TransformerException
 	 */
 	public void crearClan(String nombreClan,String nombreCreador,String poscX,String poscY) throws TransformerConfigurationException, TransformerException{
-        boolean clanIgual=false;
-        Node temp=raiz.getFirstChild();
-        while(temp!=null){
-            if (temp.getNodeName().equals(nombreClan)){
-                clanIgual=true;
-                System.out.print("ya existe ese nombre de clan");
-                break;
-            }
-            else{
-                temp=temp.getNextSibling();
-		}
-         if (clanIgual==false){
+      
             //Creamos el clan a a�adir
 	Element nuevoClan=documento.createElement(nombreClan);
 		//creamos el nodo Jugadores que va a ser agregado al clan
@@ -130,10 +119,7 @@ public class clanesXML extends XML{
 	//"Cerramos" el xml
 	cerrarXML();
         }
-        System.out.print("clan creado");
-    }
-        
-}
+ 
 
 	
 	/**

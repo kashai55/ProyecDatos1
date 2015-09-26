@@ -14,7 +14,8 @@ public class Arma1 implements Armas{
 	 * Es el conjunto de metodos que van a ser realizados por esta clase
 	 */
 	public void operation() {
-		System.out.println("se creo: " + nombre );
+		System.out.println("se creo: " + this.nombre );
+		getName();
 	}
 	/**
 	 * retorna el nombre de la clase
