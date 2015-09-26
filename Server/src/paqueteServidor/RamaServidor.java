@@ -91,8 +91,7 @@ public class RamaServidor extends Thread {
 	    		System.out.println("el nombre a buscar en el xml es:"+nombre);
 				String password=mensajeSeparado.Sub(2).toString();
 				if (password.equals(superservidor.xmlSeguridad.getContraseña(nombre))){
-					GameLogin logger=new GameLogin(superservidor.xmlClanes); 
-					jugador=logger.login(nombre, password);
+					
 					salida.writeUTF("BN\n");
 				}
 				else{
