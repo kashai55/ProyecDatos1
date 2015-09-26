@@ -1,0 +1,5 @@
+<root>
+  <item name='android.location.LocationProvider OUT_OF_SERVICE'>
+    <annotation name='java.lang.annotation.Deprecated' />
+  </item>
+</root>
