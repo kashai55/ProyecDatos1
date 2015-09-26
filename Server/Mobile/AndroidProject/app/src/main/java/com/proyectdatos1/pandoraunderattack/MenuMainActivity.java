@@ -133,7 +133,7 @@ public class MenuMainActivity extends Activity implements LocationListener {
         str.printStackTrace();
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-//       cliente = new Cliente();
+       cliente = new Cliente();
     }
 
 
@@ -424,17 +424,17 @@ public class MenuMainActivity extends Activity implements LocationListener {
             } else {
                 //If both passwords are equal
                 if ((stringPass.equals(stringCPass)) && stringPass.length() >= 4) {
-//                    cliente.comunicarse("SI/" + stringNewName + "/" + stringPass);
+                    cliente.comunicarse("SI/" + stringNewName + "/" + stringPass);
 
-//                    if (cliente.respuestaSeparada.Sub(0).toString().equals("BN")) {
+                    if (cliente.respuestaSeparada.Sub(0).toString().equals("BN")) {
                         setContentView(R.layout.activity_welcome_new_user);
                         //set text in frame
                         TextView viewTextName = (TextView) findViewById(R.id.textViewNameUser);
                         viewTextName.setText("Welcome to Pandora Under Attack \n" + "\n" + stringNewName);
 
-//                    } else {
-//                        System.out.println("Error en el servido");
-//                   }
+                    } else {
+                        System.out.println("Error en el servido");
+                   }
 
 
                 } else {
@@ -458,10 +458,10 @@ public class MenuMainActivity extends Activity implements LocationListener {
             EditText textNamePass = (EditText)findViewById(R.id.editTextPassUser);
 
 
-//            cliente.comunicarse("LI/" + textNameUser.getText().toString() + "/" + textNamePass.getText().toString());
+            cliente.comunicarse("LI/" + textNameUser.getText().toString() + "/" + textNamePass.getText().toString());
 
-//            if (cliente.respuestaSeparada.Sub(0).toString().equals("BN")) {
-//                setContentView(R.layout.activity_welcome_new_user);
+            if (cliente.respuestaSeparada.Sub(0).toString().equals("BN")) {
+                setContentView(R.layout.activity_welcome_new_user);
 
                 //set text in frame
                 TextView viewTextName = (TextView) findViewById(R.id.textViewNameUser);
@@ -486,7 +486,7 @@ public class MenuMainActivity extends Activity implements LocationListener {
 
 
 
-//       }
+       }
 
     }
 
@@ -651,9 +651,9 @@ public class MenuMainActivity extends Activity implements LocationListener {
             errorCreateClan.create();
 
         }else {
-//            cliente.comunicarse("CC/" + stringNameClan + "/" + latClan + "/" + longClan);
+            cliente.comunicarse("CC/" + stringNameClan + "/" + latClan + "/" + longClan);
 
-//            if(cliente.respuestaSeparada.Sub(0).toString().equals("CLCR")) {
+            if(cliente.respuestaSeparada.Sub(0).toString().equals("CLCR")) {
 
                 //maps
                 mMap.clear();
@@ -706,9 +706,9 @@ public class MenuMainActivity extends Activity implements LocationListener {
                 MarkerOptions markerStone = new MarkerOptions().position(locationResourceStone).title("Stone").icon(BitmapDescriptorFactory.fromResource(stoneMarker));
                 markerStone.snippet("100 of Stone " + " Toque para recolectar");
                 final Marker addStone = mMap.addMarker(markerStone);
-//            }else {
-//                System.out.println("Error en el servido");
-//            }
+            }else {
+               System.out.println("Error en el servido");
+            }
 
 
             //event
