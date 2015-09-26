@@ -1,107 +1,152 @@
 package paqueteXML;
 
-
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+/**
+*
+* @author Fernanda
+*/
 
 public class clanesXML extends XML{
 	Document documento;
 	Element raiz;
 
+/**
+ * esta funcion se encarga de crear un XML que almacena
+ * el creador del clan y los jugadores del mismo
+ * @param name
+ */
+	
 	public clanesXML(String name) {
 		super(name);
 		//Obtenemos la referencia al documento que queremos modificar
 		this.documento = super.documento;
 				
-		//Obtiene el elemento raíz del documento
+		//Obtiene el elemento raÃ­z del documento
 		this.raiz = super.raiz; 
 	}
+	/**
+	 * funcion que crea y mete en el XML los clanes y los jugadores del mismo
+	 * @param nombreClan: string con el nombre del clan
+	 * @param nombreCreador: string con el  nombre del creador del clan
+	 * @param poscX: string con la coordenada x del clan
+	 * @param poscY: string con la coordenada y del clan
+	 * @throws TransformerConfigurationException
+	 * @throws TransformerException
+	 */
+	public void crearClan(String nombreClan,String nombreCreador,String poscX,String poscY) throws TransformerConfigurationException, TransformerException{
+        boolean clanIgual=false;
+        Node temp=raiz.getFirstChild();
+        while(temp!=null){
+            if (temp.getNodeName().equals(nombreClan)){
+                clanIgual=true;
+                System.out.print("ya existe ese nombre de clan");
+                break;
+            }
+            else{
+                temp=temp.getNextSibling();
+		}
+         if (clanIgual==false){
+            //Creamos el clan a aï¿½adir
+	Element nuevoClan=documento.createElement(nombreClan);
+		//creamos el nodo Jugadores que va a ser agregado al clan
+	Element jugadores=documento.createElement("Jugadores");
 	
-	public void añadirClan(String nombreClan,String nombreCreador,String poscX,String poscY) throws TransformerConfigurationException, TransformerException{
-		//Creamos el clan a añadir
-		Element nuevoClan=documento.createElement(nombreClan);
-			//creamos el nodo Jugadores que va a ser agregado al clan
-		Element jugadores=documento.createElement("Jugadores");
-		
-				//añadimos el creador al nodo jugadores
-		Element creador =documento.createElement(nombreCreador);
-		jugadores.appendChild(creador);
-		
-					//le añadimos los objetos al creador, los cuales, como apenas está creando el clan, al principio son 0
-		Element madera=documento.createElement("Madera");
-		madera.appendChild(documento.createTextNode("0"));
-		creador.appendChild(madera);
-		
-		Element piedra=documento.createElement("Piedra");
-		piedra.appendChild(documento.createTextNode("0"));
-		creador.appendChild(piedra);
-		
-		Element hierro=documento.createElement("Hierro");
-		hierro.appendChild(documento.createTextNode("0"));
-		creador.appendChild(hierro);
-		
-		Element arma1=documento.createElement("Arma1");
-		arma1.appendChild(documento.createTextNode("0"));
-		creador.appendChild(arma1);
-		
-		Element arma2=documento.createElement("Arma2");
-		arma2.appendChild(documento.createTextNode("0"));
-		creador.appendChild(arma2);
-		
-		Element bloqueo1=documento.createElement("Bloqueo1");
-		bloqueo1.appendChild(documento.createTextNode("0"));
-		creador.appendChild(bloqueo1);
-		
-		Element bloqueo2 =documento.createElement("Bloqueo2");
-		bloqueo2.appendChild(documento.createTextNode("0"));
-		creador.appendChild(bloqueo2);
-		
-		Element meritocracia=documento.createElement("Meritocracia");
-		meritocracia.appendChild(documento.createTextNode("10"));
-		creador.appendChild(meritocracia);
-		
-		Element x=documento.createElement("CoordenadaX");
-		x.appendChild(documento.createTextNode(poscX));
-		creador.appendChild(x);
-		
-		Element y =documento.createElement("CoordenadaY");
-		y.appendChild(documento.createTextNode(poscY));
-		creador.appendChild(y);
-		
-				//añadimos el nodo jugadores al clan
-		nuevoClan.appendChild(jugadores);
-		
-		
-				//añadimos los recursos del clan
-		Element maderaClan=documento.createElement("MaderaClan");
-		maderaClan.appendChild(documento.createTextNode("0"));
-		nuevoClan.appendChild(maderaClan);
-		
-		Element piedraClan=documento.createElement("PiedraClan");
-		piedraClan.appendChild(documento.createTextNode("0"));
-		nuevoClan.appendChild(piedraClan);
-		
-		Element hierroClan=documento.createElement("HierroClan");
-		hierroClan.appendChild(documento.createTextNode("0"));
-		nuevoClan.appendChild(hierroClan);
-				
-				//añadimos el identificador de la reliquia
-		Element reliquias=documento.createElement("Reliquias");
-		reliquias.appendChild(documento.createTextNode("aqui iria el numero de clan"));
-		nuevoClan.appendChild(reliquias);
-		
-		//Añadimos el clan creado a la raiz
-		raiz.appendChild(nuevoClan);
+			//aï¿½adimos el creador al nodo jugadores
+	Element creador =documento.createElement(nombreCreador);
+	jugadores.appendChild(creador);
+	
+				//le aï¿½adimos los objetos al creador, los cuales, como apenas estï¿½ creando el clan, al principio son 0
+	Element madera=documento.createElement("Madera");
+	madera.appendChild(documento.createTextNode("0"));
+	creador.appendChild(madera);
+	
+	Element piedra=documento.createElement("Piedra");
+	piedra.appendChild(documento.createTextNode("0"));
+	creador.appendChild(piedra);
+	
+	Element hierro=documento.createElement("Hierro");
+	hierro.appendChild(documento.createTextNode("0"));
+	creador.appendChild(hierro);
+	
+	Element arma1=documento.createElement("Arma1");
+	arma1.appendChild(documento.createTextNode("0"));
+	creador.appendChild(arma1);
+	
+	Element arma2=documento.createElement("Arma2");
+	arma2.appendChild(documento.createTextNode("0"));
+	creador.appendChild(arma2);
+	
+	Element bloqueo1=documento.createElement("Bloqueo1");
+	bloqueo1.appendChild(documento.createTextNode("0"));
+	creador.appendChild(bloqueo1);
+	
+	Element bloqueo2 =documento.createElement("Bloqueo2");
+	bloqueo2.appendChild(documento.createTextNode("0"));
+	creador.appendChild(bloqueo2);
+	
+	Element meritocracia=documento.createElement("Meritocracia");
+	meritocracia.appendChild(documento.createTextNode("10"));
+	creador.appendChild(meritocracia);
+	
+	Element x=documento.createElement("CoordenadaX");
+	x.appendChild(documento.createTextNode(poscX));
+	creador.appendChild(x);
+	
+	Element y =documento.createElement("CoordenadaY");
+	y.appendChild(documento.createTextNode(poscY));
+	creador.appendChild(y);
+	
+			//aï¿½adimos el nodo jugadores al clan
+	nuevoClan.appendChild(jugadores);
+	
+	
+			//aï¿½adimos los recursos del clan
+	Element maderaClan=documento.createElement("MaderaClan");
+	maderaClan.appendChild(documento.createTextNode("0"));
+	nuevoClan.appendChild(maderaClan);
+	
+	Element piedraClan=documento.createElement("PiedraClan");
+	piedraClan.appendChild(documento.createTextNode("0"));
+	nuevoClan.appendChild(piedraClan);
+	
+	Element hierroClan=documento.createElement("HierroClan");
+	hierroClan.appendChild(documento.createTextNode("0"));
+	nuevoClan.appendChild(hierroClan);
+			
+			//aï¿½adimos el identificador de la reliquia
+	Element reliquias=documento.createElement("Reliquias");
+	reliquias.appendChild(documento.createTextNode("aqui iria el numero de clan"));
+	nuevoClan.appendChild(reliquias);
+	
+	//Aï¿½adimos el clan creado a la raiz
+	raiz.appendChild(nuevoClan);
 
-		//"Cerramos" el xml
-		cerrarXML();
-	}
+	//"Cerramos" el xml
+	cerrarXML();
+        }
+        System.out.print("clan creado");
+    }
+        
+}
 
-	public void añadirJugador(String nombreClan,String nombreJugador,String poscX, String poscY) throws TransformerConfigurationException, TransformerException{
+	
+	/**
+	 * aÃ±ade un jugador a un clan ya existente
+	 * @param nombreClan: string con el nombre del clan
+	 * @param nombreJugador: string con el nombre del jugador
+	 * @param poscX: string con la coordenada x del jugador
+	 * @param poscY: string con la coordenada y del jugador
+	 * @throws TransformerConfigurationException
+	 * @throws TransformerException
+	 */
+
+	public void aÃ±adirJugador(String nombreClan,String nombreJugador,String poscX, String poscY) throws TransformerConfigurationException, TransformerException{
 		boolean clanEncontrado=false;
 		Node temp=raiz.getFirstChild();
 		while (temp!=null){
@@ -159,7 +204,7 @@ public class clanesXML extends XML{
 				clanesJugador.appendChild(documento.createTextNode("C1/C2/C3"));
 				nuevoJugador.appendChild(clanesJugador);
 				
-				//añadimos el nuevo jugador al nodo de jugadores del clan
+				//aÃ±adimos el nuevo jugador al nodo de jugadores del clan
 				jugadoresClan.appendChild(nuevoJugador);
 				
 				clanEncontrado=true;
@@ -172,9 +217,16 @@ public class clanesXML extends XML{
 		
 		}
 		if (clanEncontrado!=true){
-			System.out.println("No se encontró el clan al cual se quiere ingresar");
+			System.out.println("No se encontrÃ³ el clan al cual se quiere ingresar");
 		}
 	}
+
+/**
+ * 	funcion que devuelve un string con la cantidad de madera de cada jugador
+ * @param nombreClan: string con el nombre del clan
+ * @param nombreJugador: string con el nombre del jugador
+ * @return la cantidad de madera de cada jugador
+ */
 
 	public int getMaderajugador(String nombreClan,String nombreJugador){
 		boolean clanEncontrado=false;
@@ -213,6 +265,13 @@ public class clanesXML extends XML{
 		return madera;
 	}
 	
+	/**
+	 * funcion que devuelve un string con la cantidad de piedra de cada jugador
+	 * @param nombreClan: string con el nombre del clan
+	 * @param nombreJugador: string con el nombre del jugador
+	 * @return la cantidad de piedra de cada jugador
+	 */
+	
 	public int getPiedrajugador(String nombreClan,String nombreJugador){
 		boolean clanEncontrado=false;
 		boolean jugadorEncontrado=false;
@@ -250,6 +309,13 @@ public class clanesXML extends XML{
 		return piedra;
 	}
 	
+	/**
+	 * funcion que devuelve un string con la cantidad de hierro de cada jugador
+	 * @param nombreClan: string con el nombre del clan
+	 * @param nombreJugador: string con el nombre del jugador
+	 * @return la cantidad de hierro de cada jugador
+	 */
+	
 	public int getHierrojugador(String nombreClan,String nombreJugador){
 		boolean clanEncontrado=false;
 		boolean jugadorEncontrado=false;
@@ -286,6 +352,16 @@ public class clanesXML extends XML{
 		System.out.println(hierro);
 		return hierro;
 	}
+	
+	/**
+	 * funcion que aumenta al jugador y al clan la cantidad de madera que es recogida por
+	 * cada jugador para la realizacion de armas y bloqueos
+	 *@param nombreClan: string con el nombre del clan
+	 * @param nombreJugador: string con el nombre del jugador
+	 * @param int con la cantidad que se va aumentar en el recurso
+	 * @throws TransformerConfigurationException
+	 * @throws TransformerException
+	 */
 
 	public void aumentarMaderaJugador(String nombreClan,String nombreJugador,int aumento) throws TransformerConfigurationException, TransformerException{
 		boolean clanEncontrado=false;
@@ -329,6 +405,17 @@ public class clanesXML extends XML{
 			cerrarXML();
 		}
 	}
+	
+	/**
+	 * funcion que aumenta al jugador y al clan la cantidad de piedra que es recogida por
+	 * cada jugador para la realizacion de armas y bloqueos
+	 * @param nombreClan: string con el nombre del clan
+	 * @param nombreJugador: string con el nombre del jugador
+	 * @param aumento: int con el aumento que se le va hacer al recurso
+	 * @throws TransformerConfigurationException
+	 * @throws TransformerException
+	 */
+	
 	public void aumentarPiedraJugador(String nombreClan,String nombreJugador,int aumento) throws TransformerConfigurationException, TransformerException{
 		boolean clanEncontrado=false;
 		boolean jugadorEncontrado=false;
@@ -371,6 +458,17 @@ public class clanesXML extends XML{
 			cerrarXML();
 		}
 	}
+	
+	/**
+	 * funcion que aumenta al jugador y al clan la cantidad de hierro que es recogida por
+	 * cada jugador para la realizacion de armas y bloqueos
+	 * @param nombreClan: string con el nombre del clan
+	 * @param nombreJugador: string con el nombre del jugador
+	 * @param aumento: int con el aumento del recurso
+	 * @throws TransformerConfigurationException
+	 * @throws TransformerException
+	 */
+
 	public void aumentarHierroJugador(String nombreClan,String nombreJugador,int aumento) throws TransformerConfigurationException, TransformerException{
 		boolean clanEncontrado=false;
 		boolean jugadorEncontrado=false;
@@ -413,6 +511,13 @@ public class clanesXML extends XML{
 			cerrarXML();
 		}
 	}
+	
+	/**
+	 * funcion que retorna la cantiadad de madera que tiene el clan solicitado
+	 * @param nombreClan: string con el nombre del clan
+	 * @return string con la cantidad de madera
+	 */
+	
 	public int getMaderaClan(String nombreClan){
 		boolean clanEncontrado=false;
 		Node temp=raiz.getFirstChild();
@@ -435,6 +540,13 @@ public class clanesXML extends XML{
 		System.out.println(madera);
 		return madera;
 	}
+	
+	/**
+	 * funcion que retorna la cantiadad de piedra que tiene el clan solicitado
+	 * @param nombreClan: string con el nombre del clan
+	 * @return string con la cantidad de piedra
+	 */
+	
 	public int getPiedraClan(String nombreClan){
 		boolean clanEncontrado=false;
 		Node temp=raiz.getFirstChild();
@@ -457,6 +569,13 @@ public class clanesXML extends XML{
 		System.out.println(piedra);
 		return piedra;
 	}
+	
+	/**
+	 * funcion que retorna la cantiadad de hierro que tiene el clan solicitado
+	 * @param nombreClan: string con el nombre del clan
+	 * @return string con la cantidad de hierro
+	 */
+	
 	public int getHierroClan(String nombreClan){
 		boolean clanEncontrado=false;
 		Node temp=raiz.getFirstChild();
@@ -479,6 +598,14 @@ public class clanesXML extends XML{
 		System.out.println(hierro);
 		return hierro;
 	}
+	
+	/**
+	 * funcion que retorna el que caso que se tenga el arma1 del jugador
+	 * @param nombreClan: string con el nombre del clan
+	 * @param nombreJugador: string cpon el nombre del jugador
+	 * @return string de arma1
+	 */
+	
 	public int getArma1jugador(String nombreClan,String nombreJugador){
 		boolean clanEncontrado=false;
 		boolean jugadorEncontrado=false;
@@ -515,6 +642,14 @@ public class clanesXML extends XML{
 		System.out.println(arma1);
 		return arma1;
 	}
+	
+	/**
+	 * funcion que retorna el que caso que se tenga el arma2 del jugador
+	 * @param nombreClan: string con el nombre del clan
+	 * @param nombreJugador: string con el nombre del jugador
+	 * @return string de arma2
+	 */
+	
 	public int getArma2jugador(String nombreClan,String nombreJugador){
 		boolean clanEncontrado=false;
 		boolean jugadorEncontrado=false;
@@ -551,6 +686,14 @@ public class clanesXML extends XML{
 		System.out.println(arma2);
 		return arma2;
 	}
+	
+	/**
+	 * funcion que retorna el que caso que se tenga el bloqueo1 del jugador
+	 * @param nombreClan: string con el nombre del clan
+	 * @param nombreJugador: string con el nombre del jugador
+	 * @return string de bloqueo1
+	 */
+	
 	public int getBloqueo1jugador(String nombreClan,String nombreJugador){
 		boolean clanEncontrado=false;
 		boolean jugadorEncontrado=false;
@@ -589,6 +732,14 @@ public class clanesXML extends XML{
 		System.out.println(bloqueo1);
 		return bloqueo1;
 	}
+	
+	/**
+	 * funcion que retorna el que caso que se tenga el bloqueo2 del jugador
+	 * @param nombreClan: string con el nombre del clan
+	 * @param nombreJugador: string con el nombre del jugador
+	 * @return string de bloqueo2
+	 */
+	
 	public int getBloqueo2jugador(String nombreClan,String nombreJugador){
 		boolean clanEncontrado=false;
 		boolean jugadorEncontrado=false;
@@ -627,6 +778,14 @@ public class clanesXML extends XML{
 		System.out.println(bloqueo2);
 		return bloqueo2;
 	}
+	
+	/**
+	 * funcion que se encarga de retornar el nivel del jugador solicitado
+	 * @param nombreClan: string con el nombre del clan
+	 * @param nombreJugador: string con el nombre del jugador
+	 * @return el nivel del jugador en el clan
+	 */
+	
 	public int getMeritocraciajugador(String nombreClan,String nombreJugador){
 		boolean clanEncontrado=false;
 		boolean jugadorEncontrado=false;
@@ -665,6 +824,14 @@ public class clanesXML extends XML{
 		System.out.println(meritocracia);
 		return meritocracia;
 	}
+	
+	/**
+	 * funcion que retorna la ubicacion en la coordenada x
+	 * @param nombreClan: string con el nombre del clan
+	 * @param nombreJugador: string con el nombre del jugador
+	 * @return la coordenada x de la posocion del jugador
+	 */
+	
 	public int getCoorXjugador(String nombreClan,String nombreJugador){
 		boolean clanEncontrado=false;
 		boolean jugadorEncontrado=false;
@@ -703,6 +870,14 @@ public class clanesXML extends XML{
 		System.out.println(cx);
 		return cx;
 	}
+	
+	/**
+	 * funcion que retorna la ubicacion en la coordenada y
+	 * @param nombreClan: string con el nombre del clan
+	 * @param nombreJugador: string con el  nombre del jugador
+	 * @return la coordenada y de la posocion del jugador
+	 */
+	
 	public int getCoorYjugador(String nombreClan,String nombreJugador){
 		boolean clanEncontrado=false;
 		boolean jugadorEncontrado=false;
@@ -741,6 +916,14 @@ public class clanesXML extends XML{
 		System.out.println(cy);
 		return cy;
 	}
+	
+	/**
+	 * esta funcion retorna todos los clanes al los que pertenece el jugador
+	 * @param nombreClan: string con el nombre del clan
+	 * @param nombreJugador: string con el nombre del jugador
+	 * @return todos los clanes del jugador
+	 */
+	
 	public String getClanesJugador(String nombreClan,String nombreJugador){
 		boolean clanEncontrado=false;
 		boolean jugadorEncontrado=false;

@@ -23,6 +23,11 @@ public abstract class XML {
     Document documento;
     //Main Node
     Element raiz;
+    
+    /**
+     * contructor de la clase
+     * @param name: string con el nombre del archivo XML
+     */
 
     public XML(String name){
     	try{
@@ -45,6 +50,13 @@ public abstract class XML {
 		}
                 
     }
+    
+    /**
+     * funcion que se encarga de cerrar el archivo XML cuando se termina de añadir informacion
+     * @throws TransformerConfigurationException
+     * @throws TransformerException
+     */
+    
     public void cerrarXML() throws TransformerConfigurationException, TransformerException{
         //Generate XML
         DOMSource source = new DOMSource(documento);
@@ -57,5 +69,5 @@ public abstract class XML {
         
         transformer.transform(source, result);
             
-    }
+}
 }
