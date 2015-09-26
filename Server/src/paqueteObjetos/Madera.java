@@ -10,8 +10,8 @@ public class Madera implements Recursos{
 	 */
 	String nombre="Madera";
 	int cantidad=1;
-	float x;
-	float y;
+	double x;
+	double y;
 	/**
 	 * Es el conjunto de metodos que van a ser realizados por esta clase
 	 */
@@ -32,7 +32,7 @@ public class Madera implements Recursos{
 	 * Asigna las coordernadas donde se va a crear el recurso
 	 */
 	@Override
-	public void SetCoord(float x, float y) {
+	public void SetCoord(double x, double y) {
 		this.x=x;
 		this.y=y;
 		

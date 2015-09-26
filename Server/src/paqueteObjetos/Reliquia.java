@@ -8,15 +8,13 @@ public class Reliquia {
 	/**
 	 * Atributos de la clase reliquia
 	 */
-	int a=1;
-	int id=a;
+	int id;
 	/**
 	 * 
 	 * Constructor de la clase reliquia
 	 */
-	Reliquia(){
-		id=a;
-		a=a+1;
+	Reliquia(int a){
+		this.id=a;
 	}
 
 }

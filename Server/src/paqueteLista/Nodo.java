@@ -8,9 +8,9 @@ public class Nodo {
 	/**
 	 * Atributos de la clase nodo
 	 */
-	Object ele;
-	Nodo sig;
-	Nodo ant;
+	public Object ele;
+	public Nodo sig;
+	public Nodo ant;
 	int indice;
 	/**
 	 * Constructor de la clase recive un objeto y lo asigna a su elemento

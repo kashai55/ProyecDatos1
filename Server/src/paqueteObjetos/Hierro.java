@@ -28,7 +28,7 @@ public class Hierro implements Recursos{
 	 * Asigna las coordernadas donde se va a crear el recurso
 	 */
 	@Override
-	public void SetCoord(float x, float y) {
+	public void SetCoord(double x, double y) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -9,6 +9,7 @@ public class Bloqueo2 implements Bloqueos{
 	 * Atributos de la clase Bloqueo2
 	 */
 	String nombre="Bloqueo2";
+	Arma2 arma;
 	/**
 	 * Obtiene el nombre del bloqueo
 	 * @return El nombre del bloqueo

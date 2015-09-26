@@ -20,7 +20,6 @@ public class Clan {
 	Lista listaReliquias = new Lista();
 	Lista listaJugadores = new Lista();
 
-	Nodo n;
 	/**
 	 * Constructor de la clase clan
 	 * @param clanName Es el nombre que e usuario va a asignar al clan creado

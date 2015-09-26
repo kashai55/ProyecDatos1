@@ -11,7 +11,7 @@ public abstract interface Recursos {
 	 * @param x Representa la latitud en la cual se va a ubicar el recurso
 	 * @param y Represeta la longitud en la cual se va a ubicar el recurso
 	 */
-	public abstract void SetCoord(float x,float y);
+	public abstract void SetCoord(double x,double y);
 	/**
 	 * Hereda el metodo para retornar el nombre del recurso 
 	 * @return el nombre del recurso
